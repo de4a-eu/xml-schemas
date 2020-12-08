@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" targetNamespace="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="xsd-vocabularies/CV-Agent.xsd"/>
+	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="xsd-vocabularies/CoreVocabularies-AggregateComponents-1.1.xsd"/>
+	<xs:include schemaLocation="common-identity-types.xsd"/>
+	<xs:simpleType name="CountryType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Start Ids types -->
+	<xs:simpleType name="RequestIdType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="50"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcedureIdType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="20"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CanonicalEvidenceIdType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="50"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- End Ids types -->
+	<!-- Start Agent types -->
+	<xs:complexType name="DataEvaluatorType">
+		<xs:all>
+			<!--xs:element ref="cagv:Agent"/-->
+			<xs:element name="Agent" type="AgentType"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="DataOwnerType">
+		<xs:all>
+			<!--xs:element ref="cagv:Agent"/-->
+			<xs:element name="Agent" type="AgentType"/>
+		</xs:all>
+	</xs:complexType>
+	<!-- End Agent types -->
+	<xs:simpleType name="TimeStampType">
+		<xs:annotation>
+			<xs:documentation>Format: YYYY-MM-DDThh:mm:ss</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<!-- Starts Evidences -->
+	<!--xs:complexType name="LegalPersonType">
+		<xs:all>
+			<xs:element ref="cva:CoreBusiness"/>
+		</xs:all>
+	</xs:complexType-->
+	<xs:complexType name="EvidenceServiceDataType">
+		<xs:all>
+			<xs:element name="EvidenceServiceURI" type="EvidenceServiceURIType"/>
+			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="CanonicalEvidenceType">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequiredEvidenceType">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax"/>
+		</xs:sequence>
+		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+	</xs:complexType>
+	<xs:complexType name="DomesticEvidenceType">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EvidenceRefType">
+		<xs:all>
+			<xs:element name="EvidenceTypeCode" type="EvidenceTypeCodeType"/>
+			<xs:element name="MimeType" type="MimeTypeType"/>
+		</xs:all>
+		<xs:attribute name="href" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<!-- Ends Evidences -->
+	<!-- Starts Others -->
+	<xs:simpleType name="AdminLevelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EvidenceServiceURIType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+		<xs:complexType name="ServiceInputParametersType">
+			<xs:sequence>
+				<xs:element name="ServiceInputParameter" type="ServiceInputParameterType" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	
+	<xs:complexType name="ServiceInputParameterType">
+		<xs:all>
+			<xs:element name="Label" type="ServiceInputParameterLabelType"/>
+			<xs:element name="Type" type="ServiceInputParameterTypeType"/>
+		</xs:all>
+		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+	</xs:complexType>
+
+	<xs:simpleType name="ServiceInputParameterLabelType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+		<xs:simpleType name="ServiceInputParameterTypeType">
+		<xs:annotation>
+			<xs:documentation>Its posiblle add more enumerations elements</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Date"/>
+			<xs:enumeration value="InputeText"/>
+			<xs:enumeration value="YesNo"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AdminTerritorialUnitType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="50"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DataRequestSubjectType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="NaturalPerson" type="NaturalPersonType"/>
+					<xs:element name="LegalEntity" type="LegalEntityType"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:element name="AditionalInfo" type="AditionalInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AditionalInfoType">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExplicitOOPRequestType">
+		<xs:sequence>
+			<!--xs:any namespace="##any" processContents="lax"/-->
+			<xs:element name="ConsentToken" type="ConsentTokenType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ConsentTokenType">
+		<xs:restriction base="xs:base64Binary"/>
+	</xs:simpleType>
+	<xs:simpleType name="EvidenceTypeCodeType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MimeTypeType">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Ends Others -->
+	<!-- Start Error types -->
+	<xs:simpleType name="CodeErrorType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextErrorType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="1024"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- End Error types -->
+	<!-- Start Agent -->
+	<xs:complexType name="AgentType">
+		<xs:all>
+			<xs:element ref="id"/>
+			<xs:element name="name" type="AgentNameType"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="StringAtributteType">
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="id">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="StringAtributteType">
+					<xs:attribute name="schemeID" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="AgentNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- End Agent -->
+</xs:schema>

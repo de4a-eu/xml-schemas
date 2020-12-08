@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" targetNamespace="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Start Natural Person -->
+	<xs:complexType name="NaturalPersonType">
+		<xs:sequence>
+			<xs:element name="GivenName" type="GivenNameType"/>
+			<xs:choice>
+				<xs:element name="FamilyName" type="SurnameType"/>
+				<xs:sequence>
+					<xs:element name="FirstSurname" type="SurnameType"/>
+					<xs:element name="SecondSurname" type="SurnameType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:element name="DateOfBirth" type="DateOfBirthType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="GivenNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="200"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SurnameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="200"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateOfBirthType">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<!-- End Natural Person -->
+	<!-- Start Legal Person -->
+	<xs:complexType name="LegalEntityType">
+		<xs:sequence>
+			<xs:element name="CompanyName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CompanyType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LegalStatus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LegalStatusEffectiveDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RegistrationDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompanyEndDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompanyActivity" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FiscalYearEndDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompanyTradeName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CompanyContactData" type="ContactPointType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CountryCode" type="LocationType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="VATRegistrationNumber" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CompanyCode" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="RegisteredAddress" type="LocationType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhysicalAddress" type="IdentifierType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LegalRepresentative" type="NaturalPersonType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="HasBranch" type="BranchType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactPointType">
+		<xs:sequence>
+			<xs:element name="Email" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Telephone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationType">
+		<xs:sequence>
+			<xs:element name="GeographicName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GeographicIdentifier" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifierType">
+		<xs:sequence>
+			<xs:element name="Identifier" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BranchType">
+		<xs:sequence>
+			<xs:element name="BranchName" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="BranchIdentificationNumber" type="IdentifierType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Branchphysicaladdress" type="LocationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BranchPostalAddress" type="LocationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- End Legal Person -->
+</xs:schema>
