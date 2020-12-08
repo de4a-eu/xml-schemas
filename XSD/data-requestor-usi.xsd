@@ -93,5 +93,21 @@
               </xs:complexType>
             </xs:element>
 
+			<xs:element name="AdminTerritorialUnits">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AdminTerritorialUnit" type="intmd:AdminTerritorialUnitType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+				</xs:complexType>
+			</xs:element>
 
+			<xs:element name="Error">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="Code" type="intmd:CodeErrorType"/>
+						<xs:element name="Text" type="intmd:TextErrorType"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
 </xs:schema>

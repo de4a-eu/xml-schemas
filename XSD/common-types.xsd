@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" targetNamespace="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- [anbe] should'nt the namespace for the common types file be common for intermediation and usi passern? -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" 
+		xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" 
+		xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" 
+		targetNamespace="http://www.de4a.eu/2020/data/requestor/pattern/intermediate/sc" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="xsd-vocabularies/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="xsd-vocabularies/CoreVocabularies-AggregateComponents-1.1.xsd"/>
 	<xs:include schemaLocation="common-identity-types.xsd"/>
