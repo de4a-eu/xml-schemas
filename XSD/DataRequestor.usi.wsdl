@@ -1,0 +1,36 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://www.de4a.eu/2020/wsdl" xmlns:req="http://www.de4a.eu/2020/data/requestor/pattern/usi" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.de4a.eu/2020/wsdl">
+	<types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.de4a.eu/2020/data/requestor/pattern/usi" schemaLocation="DR1-USI.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="requestTransferEvidence">
+		<part name="RequestTransferEvidence" element="req:RequestTransferEvidence"/>
+	</message>
+	<message name="responseTransferEvidence">
+		<part name="ResponseTransferEvidence" element="req:ResponseTransferEvidence"/>
+	</message>
+	<portType name="TransferEvidencePortType">
+		<operation name="requestTransferEvidence">
+			<input message="wsdl:requestTransferEvidence"/>
+			<output message="wsdl:responseTransferEvidence"/>
+		</operation>
+	</portType>
+	<binding name="TransferEvidenceBinding" type="wsdl:TransferEvidencePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="requestTransferEvidence">
+			<soap:operation soapAction="requestTransferEvidence" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="DataRequestor.USI">
+		<port name="DataRequestor.USI" binding="wsdl:TransferEvidenceBinding">
+			<soap:address location="https://de4a.redsara.es/DataRequestor/USI"/>
+		</port>
+	</service>
+</definitions>
