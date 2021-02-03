@@ -3,7 +3,7 @@
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="commons-type/common-types.xsd"/>
 	<xs:element name="RequestTransferEvidence">
 		<xs:complexType>
-			<xs:all>
+			<xs:sequence>
 				<xs:element name="RequestId" type="ct:RequestIdType"/>
 				<xs:element name="SpecificationId" type="ct:SpecificationIdType"/>
 				<xs:element name="TimeStamp" type="ct:TimeStampType"/>
@@ -14,16 +14,16 @@
 				<xs:element name="PreviewResponse" type="ct:PreviewResponseType"/>
 				<xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
 				<xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType"/>
-			</xs:all>
+			</xs:sequence>
 			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ResponseTransferEvidence">
 		<xs:complexType>
-			<xs:all>
+			<xs:sequence>
 				<xs:element name="Ack" type="ct:AckType"/>
 				<xs:element name="Error" type="ct:ErrorType" minOccurs="0"/>
-			</xs:all>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>

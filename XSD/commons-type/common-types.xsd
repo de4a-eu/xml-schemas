@@ -60,14 +60,14 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!-- End Ids types -->
 	<!-- Start Agent types -->
 	<xs:complexType name="DataEvaluatorType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element name="Agent" type="AgentCVType"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DataOwnerType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element name="Agent" type="AgentCVType"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<!-- End Agent types -->
 	<xs:simpleType name="TimeStampType">
@@ -78,10 +78,10 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	</xs:simpleType>
 	<!-- Starts Evidences -->
 	<xs:complexType name="EvidenceServiceDataType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element name="EvidenceServiceURI" type="EvidenceServiceURIType"/>
 			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="CanonicalEvidenceType">
 		<xs:sequence>
@@ -173,10 +173,10 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ServiceInputParameterType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element name="Label" type="ServiceInputParameterLabelType"/>
 			<xs:element name="Type" type="ServiceInputParameterTypeType"/>
-		</xs:all>
+		</xs:sequence>
 		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 	</xs:complexType>
 	<xs:simpleType name="ServiceInputParameterLabelType">
@@ -245,10 +245,10 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!-- Ends Others -->
 	<!-- Start Error types -->
 	<xs:complexType name="ErrorType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element name="Code" type="CodeErrorType"/>
 			<xs:element name="Text" type="TextErrorType"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="CodeErrorType">
 		<xs:restriction base="xs:string">
@@ -275,10 +275,10 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!-- End ACK types -->
 	<!-- Start Agent CV -->
 	<xs:complexType name="AgentCVType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="cbc:id"/>
 			<xs:element ref="cbc:name"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<!-- End Agent CV -->
 </xs:schema>

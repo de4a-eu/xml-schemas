@@ -3,10 +3,10 @@
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="commons-type/common-types.xsd"/>
 	<xs:element name="RequestLookupRoutingInformation">
 		<xs:complexType>
-			<xs:all>
+			<xs:sequence>
 				<xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
 				<xs:element name="Country" type="ct:CountryType"/>
-			</xs:all>
+			</xs:sequence>
 			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
@@ -22,11 +22,11 @@
 	</xs:element>
 	<xs:element name="RequestLookupEvidenceServiceData">
 		<xs:complexType>
-			<xs:all>
+			<xs:sequence>
 				<xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
 				<xs:element name="Country" type="ct:CountryType"/>
 				<xs:element name="AdminTerritorialUnit" type="ct:AdminTerritorialUnitType"/>
-			</xs:all>
+			</xs:sequence>
 			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>

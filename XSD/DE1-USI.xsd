@@ -15,10 +15,10 @@
 	</xs:element>
 	<xs:element name="ResponseForwardEvidence">
 		<xs:complexType>
-			<xs:all>
+			<xs:sequence>
 				<xs:element name="Ack" type="ct:AckType"/>
 				<xs:element name="Error" type="ct:ErrorType" minOccurs="0"/>
-			</xs:all>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
