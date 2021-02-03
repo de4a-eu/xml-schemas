@@ -85,7 +85,7 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	</xs:complexType>
 	<xs:complexType name="CanonicalEvidenceType">
 		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax"/>
+			<xs:any namespace="##any" processContents="strict"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DomesticsEvidencesType">
