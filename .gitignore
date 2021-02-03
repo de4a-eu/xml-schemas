@@ -23,7 +23,6 @@ hs_err_pid*
 bin/
 target/
 .idea/
-tc-webapp/conf/
 
 .classpath
 .project
@@ -32,5 +31,4 @@ tc-webapp/conf/
 *.iml
 *.cer
 *.jks
-private-*
 zz
