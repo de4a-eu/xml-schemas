@@ -25,7 +25,7 @@
 					<xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
 					<xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType" minOccurs="0"/>
 				</xs:sequence>
-				<xs:element name="Error" type="ct:ErrorType"/>
+				<xs:element name="ErrorList" type="ct:ErrorListType"/>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>

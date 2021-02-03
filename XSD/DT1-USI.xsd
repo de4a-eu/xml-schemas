@@ -22,7 +22,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Ack" type="ct:AckType"/>
-				<xs:element name="Error" type="ct:ErrorType" minOccurs="0"/>
+				<xs:element name="ErrorList" type="ct:ErrorListType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

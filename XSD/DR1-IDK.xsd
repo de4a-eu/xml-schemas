@@ -36,7 +36,7 @@
 				<xs:sequence>
 					<xs:element name="EvidenceService" type="ct:EvidenceServiceType"/>
 				</xs:sequence>
-				<xs:element name="Error" type="ct:ErrorType"/>
+				<xs:element name="ErrorList" type="ct:ErrorListType"/>
 			</xs:choice>
 			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
