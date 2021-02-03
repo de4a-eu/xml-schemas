@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/transferor/pattern/usi" targetNamespace="http://www.de4a.eu/2020/data/transferor/pattern/usi" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="commons-type\common-types.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/transferor/pattern/usi" xmlns:ct="http://www.de4a.eu/2020/commons/type" targetNamespace="http://www.de4a.eu/2020/data/transferor/pattern/usi" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="commons-type/common-types.xsd"/>
 	<xs:element name="RequestTransferEvidence">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="RequestId" type="RequestIdType"/>
-				<xs:element name="SpecificationId" type="SpecificationIdType"/>
-				<xs:element name="TimeStamp" type="TimeStampType"/>
-				<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
-				<xs:element name="DataEvaluator" type="AgentCVType"/>
-				<xs:element name="DataOwner" type="AgentCVType"/>
-				<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-				<xs:element name="PreviewResponse" type="PreviewResponseType"/>
-				<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-				<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType"/>
+				<xs:element name="RequestId" type="ct:RequestIdType"/>
+				<xs:element name="SpecificationId" type="ct:SpecificationIdType"/>
+				<xs:element name="TimeStamp" type="ct:TimeStampType"/>
+				<xs:element name="ProcedureId" type="ct:ProcedureIdType" minOccurs="0"/>
+				<xs:element name="DataEvaluator" type="ct:AgentCVType"/>
+				<xs:element name="DataOwner" type="ct:AgentCVType"/>
+				<xs:element name="DataRequestSubject" type="ct:DataRequestSubjectCVType"/>
+				<xs:element name="PreviewResponse" type="ct:PreviewResponseType"/>
+				<xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
+				<xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType"/>
 			</xs:all>
 			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
@@ -21,8 +21,8 @@
 	<xs:element name="ResponseTransferEvidence">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="Ack" type="AckType"/>
-				<xs:element name="Error" type="ErrorType" minOccurs="0"/>
+				<xs:element name="Ack" type="ct:AckType"/>
+				<xs:element name="Error" type="ct:ErrorType" minOccurs="0"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
