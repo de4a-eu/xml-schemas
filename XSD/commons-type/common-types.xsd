@@ -16,6 +16,7 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/common/cbc-2.0.0#" schemaLocation="../xsd-vocabularies/CV-CommonBasicComponents.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../xsd-vocabularies/CCTS_CCT_SchemaModule-2.1.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type"  schemaLocation="common-identity-types.xsd"/>
+	
 	<xs:simpleType name="CountryType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="\d{3}"/>
@@ -23,40 +24,32 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	</xs:simpleType>
 	<!-- Start Ids types -->
 	<xs:simpleType name="RequestIdType">
-		<xs:restriction base="xs:token">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
+		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<xs:simpleType name="SpecificationIdType">
-		<xs:restriction base="xs:token">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
+		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<xs:simpleType name="ProcedureIdType">
-		<xs:restriction base="xs:string">
+		<xs:restriction base="IdType">
 			<xs:minLength value="3"/>
 			<xs:maxLength value="20"/>
-			<xs:whiteSpace value="collapse"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ReturnServiceIdType">
-		<xs:restriction base="xs:token">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
+		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<xs:simpleType name="CanonicalEvidenceIdType">
-		<xs:restriction base="xs:token">
+		<xs:restriction base="IdType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IdType">
+		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="250"/>
-			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
 		</xs:restriction>
 	</xs:simpleType>
+	
 	<!-- End Ids types -->
 	<!-- Start Agent types -->
 	<xs:complexType name="DataEvaluatorType">
