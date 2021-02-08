@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-xmlns="http://www.de4a.eu/2020/commons/type" 
-xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" 
-xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" 
-xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" 
-xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#"
-xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" 
-xmlns:cit="http://www.de4a.eu/2020/commons/identity/type"
-targetNamespace="http://www.de4a.eu/2020/commons/type"
-elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="../xsd-vocabularies/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="../xsd-vocabularies/CoreVocabularies-AggregateComponents-1.1.xsd"/>
 	<xs:import namespace="https://semic.org/sa/cv/common/dataTypes-2.0.0#" schemaLocation="../xsd-vocabularies/CV-DataTypes.xsd"/>
 	<xs:import namespace="https://semic.org/sa/cv/common/cbc-2.0.0#" schemaLocation="../xsd-vocabularies/CV-CommonBasicComponents.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../xsd-vocabularies/CCTS_CCT_SchemaModule-2.1.xsd"/>
-	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type"  schemaLocation="common-identity-types.xsd"/>
-	
+	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../xsd-vocabularies/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
+	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="\d{3}"/>
@@ -41,7 +31,6 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:simpleType name="CanonicalEvidenceIdType">
 		<xs:restriction base="IdType"/>
 	</xs:simpleType>
-	
 	<xs:simpleType name="IdType">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
@@ -49,7 +38,6 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
 		</xs:restriction>
 	</xs:simpleType>
-	
 	<!-- End Ids types -->
 	<!-- Start Agent types -->
 	<xs:complexType name="DataEvaluatorType">
@@ -91,7 +79,7 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 		<xs:sequence>
 			<xs:element name="DomesticEvidenceIdRef" type="IdRefType"/>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
-			<xs:element name="MimeType" type="MimeTypeType"/>
+			<xs:element name="MimeType" type="clmIANAMIMEMediaType:BinaryObjectMimeCodeContentType"/>
 			<xs:element name="DataLanguage" type="DataLanguageType"/>
 			<xs:element name="AddtionalInfo" type="ct:TextType" minOccurs="0"/>
 		</xs:sequence>
@@ -112,9 +100,6 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 			<xs:enumeration value="OriginalIssuing"/>
 			<xs:enumeration value="MultinlingualFormIssuing"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="MimeTypeType">
-		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
 	<xs:simpleType name="DataLanguageType">
 		<xs:restriction base="xs:language"/>
