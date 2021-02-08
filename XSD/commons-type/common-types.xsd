@@ -152,6 +152,7 @@
 		<xs:sequence>
 			<xs:element name="Label" type="ServiceInputParameterLabelType"/>
 			<xs:element name="Type" type="ServiceInputParameterTypeType"/>
+			<xs:element name="Value" type="ServiceInputParameterValueType"/>
 		</xs:sequence>
 		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 	</xs:complexType>
@@ -170,6 +171,15 @@
 			<xs:enumeration value="Date"/>
 			<xs:enumeration value="InputeText"/>
 			<xs:enumeration value="YesNo"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceInputParameterValueType">
+		<xs:annotation>
+			<xs:documentation>Parametter value </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="AdminTerritorialUnitType">
