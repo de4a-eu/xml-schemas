@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" xmlns:isoc="http://www.de4a.eu/2020/commons/country/iso3166-1" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="../xsd-vocabularies/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="../xsd-vocabularies/CoreVocabularies-AggregateComponents-1.1.xsd"/>
-	<xs:import namespace="https://semic.org/sa/cv/common/dataTypes-2.0.0#" schemaLocation="../xsd-vocabularies/CV-DataTypes.xsd"/>
 	<xs:import namespace="https://semic.org/sa/cv/common/cbc-2.0.0#" schemaLocation="../xsd-vocabularies/CV-CommonBasicComponents.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../xsd-vocabularies/CCTS_CCT_SchemaModule-2.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../xsd-vocabularies/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
+	<xs:import namespace="http://www.de4a.eu/2020/commons/country/iso3166-1" schemaLocation="../xsd-vocabularies/ISO3166-1-Country-Codes.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="\d{3}"/>
-		</xs:restriction>
+		<xs:restriction base="isoc:ISO3166-Country-Code"/>
 	</xs:simpleType>
 	<!-- Start Ids types -->
 	<xs:simpleType name="RequestIdType">
