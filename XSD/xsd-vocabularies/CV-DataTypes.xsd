@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:udt="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://semic.org/sa/cv/common/dataTypes-2.0.0#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+<xsd:schema xmlns="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:udt="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
 	<!-- ===== Imports ===== -->
 	<xsd:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="CCTS_CCT_SchemaModule-2.1.xsd"/>
 	<!-- ==== Element Declaration ==== -->
 	<xsd:element name="Amount" type="AmountType"/>
+	<xsd:element name="AnyURI" type="AnyURIType"/>
+	<xsd:element name="BinaryObject" type="BinaryObjectType"/>
+	<xsd:element name="Boolean" type="BooleanType"/>
 	<xsd:element name="Code" type="CodeType"/>
 	<xsd:element name="Date" type="DateType"/>
 	<xsd:element name="DateTime" type="DateTimeType"/>
+	<xsd:element name="Decimal" type="DecimalType"/>
+	<xsd:element name="Duration" type="DurationType"/>
 	<xsd:element name="ID" type="IdentifierType"/>
 	<!-- identifies a class instance, i.e. it's an object identifier -->
 	<xsd:element name="Identifier" type="IdentifierType"/>
 	<!-- a value that 'is' an identifier, used exclusively in the class "cac:Value", where mutually exclusive (disjoint) types of values -->
 	<xsd:element name="Indicator" type="IndicatorType"/>
+	<xsd:element name="HexBinary" type="HexBinaryType"/>
 	<xsd:element name="Name" type="NameType"/>
 	<xsd:element name="Measure" type="MeasureType"/>
 	<xsd:element name="PositiveInteger" type="PositiveIntegerType"/>
@@ -20,16 +26,17 @@
 	<xsd:element name="Time" type="TimeType"/>
 	<xsd:element name="Type" type="TypeType"/>
 	<xsd:element name="URI" type="URIType"/>
-	<xsd:element name="BinaryObject" type="BinaryObjectType"/>
 	<!-- ===== Entity Type Definitions ===== -->
-	<xsd:complexType name="BinaryObjectType">
-		<xsd:simpleContent>
-			<xsd:extension base="udt:BinaryObjectType"/>
-		</xsd:simpleContent>
-	</xsd:complexType>
 	<xsd:complexType name="AmountType">
 		<xsd:simpleContent>
 			<xsd:extension base="udt:AmountType">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AnyURIType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:anyURI">
 				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
 			</xsd:extension>
 		</xsd:simpleContent>
@@ -46,6 +53,20 @@
 		<xsd:attribute name="AssuranceLevelAgencyID" type="xsd:normalizedString"/>
 		<xsd:attribute name="AssuranceLevelAgencyName" type="xsd:string"/>
 	</xsd:attributeGroup>
+	<xsd:complexType name="BinaryObjectType">
+		<xsd:simpleContent>
+			<xsd:extension base="udt:BinaryObjectType">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="BooleanType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:boolean">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
 	<xsd:complexType name="CodeType">
 		<xsd:simpleContent>
 			<xsd:extension base="udt:CodeType">
@@ -63,6 +84,27 @@
 	<xsd:complexType name="DateTimeType">
 		<xsd:simpleContent>
 			<xsd:extension base="udt:DateTimeType">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DecimalType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DurationType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:duration">
+				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="HexBinaryType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:hexBinary">
 				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>
 			</xsd:extension>
 		</xsd:simpleContent>
@@ -116,7 +158,7 @@
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
-	<xsd:complexType name="TextType">
+	<xsd:complexType name="TextType" mixed="true">
 		<xsd:simpleContent>
 			<xsd:extension base="udt:TextType">
 				<xsd:attributeGroup ref="AssuranceLevelAttributes"/>

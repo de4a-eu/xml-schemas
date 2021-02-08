@@ -69,7 +69,7 @@
     </xsd:simpleContent>
   </xsd:complexType>
   <!-- Statement -->
-  <!-- JAXB hack add "type" suffix -->
+  <!-- [TOOP] added "Type" -->
   <xsd:complexType name="StatementType">
     <xsd:sequence>
       <xsd:element name="Statement" minOccurs="1" maxOccurs="1">
@@ -103,7 +103,7 @@
   </xsd:complexType>
   <!-- Resource-->
   <xsd:complexType name="Resource">
-    <xsd:attribute ref="resource" use="required"/>
+    <xsd:attribute ref="resource" use="optional"/>
   </xsd:complexType>
   <!-- CatalogRoot -->
   <!--<xsd:complexType name="CatalogRoot">

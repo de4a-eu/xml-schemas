@@ -17,10 +17,12 @@
     <xs:element name="addressId" type="xs:string"/>
 
     <!-- Object properties declarations-->
-<!--     <xs:element name="address" type="AddressType"/> -->
+    <xs:element name="address" type="AddressType"/>
 
     <!-- Classes declarations-->
+    <!-- [TOOP] double 
     <xs:element name="Address" type="AddressType"/>
+     -->
     <xs:element name="Geometry" type="GeometryType"/>
     <xs:element name="Location" type="LocationType"/>
     
@@ -58,7 +60,7 @@
     
 <xs:complexType name="LocationType">
     <xs:sequence>
-        <xs:element name="address" type="AddressType" minOccurs="0"/>
+        <xs:element ref="address" minOccurs="0"/>
     </xs:sequence>
 </xs:complexType>
 

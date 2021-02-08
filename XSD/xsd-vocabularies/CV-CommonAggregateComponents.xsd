@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- CCCEV-related namespaces are temporary for the time being. They point to the GitHub where the development is being done. -->
-<xsd:schema xmlns="https://semic.org/sa/cv/common/cac-2.0.0#"
-   xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#"
+<xsd:schema xmlns="https://data.europe.eu/semanticassets/ns/cv/common/cac_v2.0.0#"
+   xmlns:cbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:lcn="http://www.w3.org/ns/locn#"
-	targetNamespace="https://semic.org/sa/cv/common/cac-2.0.0#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	targetNamespace="https://data.europe.eu/semanticassets/ns/cv/common/cac_v2.0.0#" 
 	elementFormDefault="qualified" 
 	attributeFormDefault="unqualified" version="2.0.0">
 	<!-- For the imports, the paths are relative to the folder structure used in the development GitHub. This faciliates the packaging into a volume aimed to distribution of any vocabulary release. -->
-   <xsd:import namespace="https://semic.org/sa/cv/common/cbc-2.0.0#" schemaLocation="CV-CommonBasicComponents.xsd"/>
+   <xsd:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" schemaLocation="CV-CommonBasicComponents.xsd"/>
    <xsd:import namespace="http://www.w3.org/ns/locn#" schemaLocation="locn.xsd"/>
+   <xsd:import namespace="http://www.w3.org/2002/07/owl#" schemaLocation="owl.xsd"/>
    <!-- ===== Element Declarations ===== -->
    
    <!-- Data elements -->
@@ -43,12 +45,7 @@
    
    <!-- Object elements -->
    <!-- none -->
-
-   <!-- Classe declaration -->
-   <xsd:element name="Address" type="AddressType"/>
-   <xsd:element name="Period" type="PeriodType"/>
-   
-      
+     
    <!-- ===== Type Definitions ===== -->
 
    <!-- The TOP class "Thing", which for now has no elements, only attributes -->
@@ -95,6 +92,8 @@
    </xsd:complexType>
    
    <xsd:complexType name="PeriodType">
+      <xsd:complexContent>
+         <xsd:extension base="owl:ThingType">
             <xsd:sequence>
                <xsd:element ref="cbc:description" minOccurs="0" maxOccurs="unbounded"/>
                <xsd:element ref="cbc:startDate" minOccurs="0" maxOccurs="1"/>      
@@ -104,6 +103,8 @@
                <xsd:element ref="cbc:durationMeasure" minOccurs="0" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attributeGroup ref="ThingAttributes"/>
+         </xsd:extension>
+      </xsd:complexContent>
    </xsd:complexType>
 
 </xsd:schema>

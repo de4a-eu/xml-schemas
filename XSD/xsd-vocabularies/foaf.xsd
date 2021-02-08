@@ -10,12 +10,14 @@
 	
 	<!-- Data properties -->
 	
+	<xsd:element name="account" type="xsd:anyType"/>
 	<xsd:element name="currentProject" type="xsd:anyType"/>
 	<xsd:element name="lastName" type="xsd:string"/>
 	<xsd:element name="familyName" type="xsd:string"/>
 	<xsd:element name="family_name" type="xsd:string"/>
 	<xsd:element name="firstName" type="xsd:string"/>
 	<xsd:element name="geekcode" type="xsd:normalizedString"/>
+	<xsd:element name="homepage" type="DocumentType"/>
 	<xsd:element name="img" type="xsd:base64Binary"/>
 	<xsd:element name="myersBriggs" type="xsd:normalizedString"/>
 	<xsd:element name="pastProject" type="xsd:anyType"/>
@@ -32,17 +34,13 @@
 	<xsd:element name="knows" type="PersonType"/>
 	<xsd:element name="page" type="DocumentType"/>
 	
-	
-	<!-- Class declarations -->
-	<xsd:element name="Agent" type="AgentType"/>
-	<xsd:element name="Document" type="DocumentType"/>
-	<xsd:element name="Organization" type="OrganizationType"/>
-	<xsd:element name="Person" type="PersonType"/>
 		
 	<!-- Element definition -->
 
 	<xsd:complexType name="AgentType">
-		<xsd:sequence/>		
+		<xsd:sequence>
+			<xsd:element ref="account" minOccurs="0" maxOccurs="0"></xsd:element>
+		</xsd:sequence>		
 	</xsd:complexType>
 	
 	<xsd:complexType name="DocumentType">
