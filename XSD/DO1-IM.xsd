@@ -15,7 +15,6 @@
 				<xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
 				<xs:element name="EvidenceServiceData" type="ct:EvidenceServiceDataType"/>
 			</xs:sequence>
-			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ResponseExtractEvidence">

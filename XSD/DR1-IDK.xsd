@@ -7,7 +7,6 @@
 				<xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
 				<xs:element name="Country" type="ct:CountryType"/>
 			</xs:sequence>
-			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ResponseLookupRoutingInformation">
@@ -17,7 +16,6 @@
 				<xs:element name="EvidenceService" type="ct:EvidenceServiceType"/>
 				<xs:element name="Error" type="ct:ErrorType"/>
 			</xs:choice>
-			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="RequestLookupEvidenceServiceData">
@@ -27,7 +25,6 @@
 				<xs:element name="Country" type="ct:CountryType"/>
 				<xs:element name="AdminTerritorialUnit" type="ct:AdminTerritorialUnitType"/>
 			</xs:sequence>
-			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ResponseLookupEvidenceServiceData">
@@ -38,7 +35,6 @@
 				</xs:sequence>
 				<xs:element name="ErrorList" type="ct:ErrorListType"/>
 			</xs:choice>
-			<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
