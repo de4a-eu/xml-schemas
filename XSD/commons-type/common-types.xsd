@@ -75,10 +75,11 @@
 	</xs:complexType>
 	<xs:complexType name="DomesticEvidenceType">
 		<xs:sequence>
-			<xs:element name="DomesticEvidenceIdRef" type="IdRefType"/>
+			<xs:element name="DomesticEvidenceIdRef" type="IdRefType" minOccurs="0"/>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
 			<xs:element name="MimeType" type="clmIANAMIMEMediaType:BinaryObjectMimeCodeContentType"/>
 			<xs:element name="DataLanguage" type="DataLanguageType"/>
+			<xs:element name="EvidenceData" type="xs:base64Binary"/>
 			<xs:element name="AddtionalInfo" type="ct:TextType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
