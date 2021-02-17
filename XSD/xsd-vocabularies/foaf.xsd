@@ -14,9 +14,7 @@
 	<xsd:element name="currentProject" type="xsd:anyType"/>
 	<xsd:element name="lastName" type="xsd:string"/>
 	<xsd:element name="familyName" type="xsd:string"/>
-	<!--
 	<xsd:element name="family_name" type="xsd:string"/>
-	-->
 	<xsd:element name="firstName" type="xsd:string"/>
 	<xsd:element name="geekcode" type="xsd:normalizedString"/>
 	<xsd:element name="homepage" type="DocumentType"/>
@@ -58,9 +56,7 @@
 			<xsd:element ref="currentProject" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="lastName" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="familyName" minOccurs="0" maxOccurs="unbounded"/>
-			<!--
 			<xsd:element ref="family_name" minOccurs="0" maxOccurs="unbounded"/>
-			-->
 			<xsd:element ref="firstName" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="geekcode" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="img" minOccurs="0" maxOccurs="unbounded"/>
