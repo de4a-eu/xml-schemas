@@ -24,7 +24,9 @@
     </xsd:annotation>
     <xsd:simpleContent>
       <xsd:extension base="xsd:string">
+        <!--
         <xsd:attribute ref="xml:lang" use="optional"/>
+        -->
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>

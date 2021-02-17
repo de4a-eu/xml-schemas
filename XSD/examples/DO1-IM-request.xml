@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:RequestExtractEvidence Language="en" xmlns:cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:p="http://www.de4a.eu/2020/data/owner/pattern/intermediate" xmlns:p1="http://www.de4a.eu/2020/commons/type" xmlns:p2="http://www.de4a.eu/2020/commons/identity/type" xmlns:p3="http://eidas.europa.eu/attributes/naturalperson" xmlns:p4="http://eidas.europa.eu/attributes/legalperson" xmlns:p5="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:p6="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.de4a.eu/2020/data/owner/pattern/intermediate ../DO1-IM.xsd ">
+  <p:RequestId>p:RequestId</p:RequestId>
+  <p:SpecificationId>p:SpecificationId</p:SpecificationId>
+  <p:TimeStamp>2001-12-31T12:00:00</p:TimeStamp>
+  <p:ProcedureId>p:ProcedureId</p:ProcedureId>
+  <p:DataEvaluator>
+    <p5:id AssuranceLevelAgencyID="" AssuranceLevelAgencyName="" AssuranceLevelCodeListID="" AssuranceLevelCodeListVerionID="" AssuranceLevelValue="" schemeAgencyID="" schemeAgencyName="" schemeDataURI="http://tempuri.org" schemeID="" schemeName="" schemeURI="http://tempuri.org" schemeVersionID="">p5:id</p5:id>
+    <p5:name AssuranceLevelAgencyID="" AssuranceLevelAgencyName="" AssuranceLevelCodeListID="" AssuranceLevelCodeListVerionID="" AssuranceLevelValue="" languageID="EN" languageLocaleID="">p5:name</p5:name>
+  </p:DataEvaluator>
+  <p:DataOwner>
+    <p5:id AssuranceLevelAgencyID="" AssuranceLevelAgencyName="" AssuranceLevelCodeListID="" AssuranceLevelCodeListVerionID="" AssuranceLevelValue="" schemeAgencyID="" schemeAgencyName="" schemeDataURI="http://tempuri.org" schemeID="" schemeName="" schemeURI="http://tempuri.org" schemeVersionID="">p5:id</p5:id>
+    <p5:name AssuranceLevelAgencyID="" AssuranceLevelAgencyName="" AssuranceLevelCodeListID="" AssuranceLevelCodeListVerionID="" AssuranceLevelValue="" languageID="EN" languageLocaleID="">p5:name</p5:name>
+  </p:DataOwner>
+  <p:DataRequestSubject>
+    <p1:DataSubjectPerson>
+      <p2:Identifier>p2:Identifier</p2:Identifier>
+      <p2:GivenName p3:LatinScript="true">p2:GivenName</p2:GivenName>
+      <p2:FamilyName p3:LatinScript="true">p2:FamilyName</p2:FamilyName>
+      <p2:DateOfBirth>2001-01-01</p2:DateOfBirth>
+    </p1:DataSubjectPerson>
+    <p1:DataSubjectRepresentative>
+      <p2:Identifier>p2:Identifier</p2:Identifier>
+      <p2:GivenName p3:LatinScript="true">p2:GivenName</p2:GivenName>
+      <p2:FamilyName p3:LatinScript="true">p2:FamilyName</p2:FamilyName>
+      <p2:DateOfBirth>2001-01-01</p2:DateOfBirth>
+    </p1:DataSubjectRepresentative>
+  </p:DataRequestSubject>
+  <p:RequestGrounds>
+    <p1:LawELIPermanentLink>http://tempuri.org</p1:LawELIPermanentLink>
+  </p:RequestGrounds>
+  <p:CanonicalEvidenceId>p:CanonicalEvidenceId</p:CanonicalEvidenceId>
+  <p:EvidenceServiceData>
+    <p1:EvidenceServiceURI>p1:EvidenceServiceURI</p1:EvidenceServiceURI>
+    <p1:ServiceInputParameters>
+      <p1:ServiceInputParameter Language="en">
+        <p1:Label>p1:Label</p1:Label>
+        <p1:Type>Date</p1:Type>
+      </p1:ServiceInputParameter>
+    </p1:ServiceInputParameters>
+  </p:EvidenceServiceData>
+</p:RequestExtractEvidence>
