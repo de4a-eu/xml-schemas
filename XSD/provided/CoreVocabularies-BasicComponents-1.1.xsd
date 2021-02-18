@@ -96,9 +96,9 @@
   first Contributor listed in the Copyright Notice has its principal 
   place of business, unless otherwise specified by this Contributor.
 -->
-<xsd:schema xmlns="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/ns/corevocabulary/BasicComponents" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.91">
+<xsd:schema targetNamespace="http://www.w3.org/ns/corevocabulary/BasicComponents" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.91" xmlns="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:udt="urn:oasis:names:specification:bdndr:schema:xsd:UnqualifiedDataTypes-1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<!-- ===== Imports ===== -->
-	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" schemaLocation="UBL-UnqualifiedDataTypes-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:bdndr:schema:xsd:UnqualifiedDataTypes-1" />
 	<!-- ===== Element Declarations ===== -->
 	<xsd:element name="AddressAddressArea" type="AddressAddressAreaType"/>
 	<xsd:element name="AddressAdminUnitLocationOne" type="AddressAdminUnitLocationOneType"/>
