@@ -38,6 +38,7 @@
       <p1:IssuingType>OriginalIssuing</p1:IssuingType>
       <p1:MimeType>application/CSTAdata+xml</p1:MimeType>
       <p1:DataLanguage>EN</p1:DataLanguage>
+      <p1:EvidenceData>SGVsbG8gV29ybGQ=</p1:EvidenceData>
     </p1:DomesticEvidence>
   </p:DomesticEvidenceList>
 </p:RequestTransferEvidence>
