@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/identity/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ein="http://eidas.europa.eu/attributes/naturalperson" xmlns:eil="http://eidas.europa.eu/attributes/legalperson" targetNamespace="http://www.de4a.eu/2020/commons/identity/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://eidas.europa.eu/attributes/naturalperson" schemaLocation="../xsd-vocabularies/eidas-NP.xsd"/>
-	<xs:import namespace="http://eidas.europa.eu/attributes/legalperson" schemaLocation="../xsd-vocabularies/eidas-LP.xsd"/>
+	<xs:import namespace="http://eidas.europa.eu/attributes/naturalperson" schemaLocation="../external/eidas-NP.xsd"/>
+	<xs:import namespace="http://eidas.europa.eu/attributes/legalperson" schemaLocation="../external/eidas-LP.xsd"/>
 	<!-- Start Natural Person CV -->
 	<xs:complexType name="NaturalPersonIdentifierType">
 		<xs:annotation>
