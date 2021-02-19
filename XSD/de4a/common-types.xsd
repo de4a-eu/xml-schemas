@@ -8,7 +8,10 @@
 	<xs:import namespace="http://www.de4a.eu/2020/commons/country/iso3166-1" schemaLocation="ISO3166-1-Country-Codes.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">
-		<xs:restriction base="isoc:ISO3166-Country-Code"/>
+		<!--xs:restriction base="isoc:ISO3166-Country-Code"/-->
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
 	</xs:simpleType>
 	<!-- Start Ids types -->
 	<xs:simpleType name="RequestIdType">
@@ -44,6 +47,11 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DataOwnerType">
+		<xs:sequence>
+			<xs:element name="Agent" type="AgentCVType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataTransferorType">
 		<xs:sequence>
 			<xs:element name="Agent" type="AgentCVType"/>
 		</xs:sequence>
@@ -106,19 +114,26 @@
 	<!-- Ends Evidences -->
 	<!-- Starts Others -->
 	<xs:complexType name="IssuingAuthorityType">
-		<xs:annotation>
-			<xs:documentation>To be defined</xs:documentation>
-		</xs:annotation>
 		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax"/>
+			<xs:element name="EvidenceTypeId" type="EvidenceTypeIdType"/>
+			<xs:element name="CountryCode" type="CountryType"/>
+			<xs:element name="IaLevelPath" type="IaLevelPathType"/>
+			<xs:element name="IaTotalNum" type="IaTotalNumType"/>
+			<xs:element name="IaOrganisationalStructure" type="IaOrganisationalStructureType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="EvidenceServiceType">
 		<xs:annotation>
-			<xs:documentation>To be defined</xs:documentation>
+			<xs:documentation>The rest of the service metadata is located in the Central Directory</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax"/>
+			<xs:element name="Service" type="ServiceType"/>
+			<xs:element name="CanonicalEvidenceType" type="CanonicalEvidenceidkType"/>
+			<xs:element name="DataOwner" type="DataOwnerType"/>
+			<xs:element name="DataTransferor" type="DataTransferorType"/>
+			<xs:element name="RedirectURL" type="RedirectURLType" minOccurs="0"/>
+			<xs:element name="DataQuality" type="DataQualityType" minOccurs="0"/>
+			<xs:element name="InputParameterSets" type="InputParameterSetsType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AdminTerritorialUnitsType">
@@ -272,4 +287,209 @@
 		</xs:sequence>
 	</xs:complexType>
 	<!-- End Agent CV -->
+	<!-- Start IDK Type -->
+	<xs:simpleType name="ServiceType">
+		<xs:restriction base="IdType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CanonicalEvidenceidkType">
+		<xs:restriction base="IdType"/>
+	</xs:simpleType>
+	<xs:simpleType name="RedirectURLType">
+		<xs:restriction base="xs:anyURI">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="1024"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DataQualityType">
+		<xs:sequence>
+			<xs:element name="PopulationCoverage" type="PopulationCoverageType" minOccurs="0"/>
+			<xs:element name="AdditionalInfo" type="AdditionalInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="PopulationCoverageType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AdditionalInfoType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="InputParameterSetsType">
+		<xs:sequence>
+			<xs:element name="SerialNumber" type="SerialNumberType"/>
+			<xs:element name="Title" type="TitleType"/>
+			<xs:element name="RecordMatchingAssurance" type="RecordMatchingAssuranceType" minOccurs="0"/>
+			<xs:element name="Parameters" type="ParametersType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="SerialNumberType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TitleType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RecordMatchingAssuranceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="low"/>
+			<xs:enumeration value="medium"/>
+			<xs:enumeration value="high"/>
+			<xs:enumeration value="exact"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ParametersType">
+		<xs:sequence>
+			<xs:element name="Parameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParameterType">
+		<xs:sequence>
+			<xs:element name="ItemId" type="ItemIdType"/>
+			<xs:element name="ItemType" type="ItemTypeType" minOccurs="0"/>
+			<xs:element name="DataType" type="DataTypeType" minOccurs="0"/>
+			<xs:element name="Constraints" type="ConstraintsType" minOccurs="0"/>
+			<xs:element name="Texts" type="TextsType" minOccurs="0"/>
+			<!-- Pending its recursive-->
+			<!--xs:element name="Children" type="ParameterType" minOccurs="0"/-->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ItemIdType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ItemTypeType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="attribute"/>
+			<xs:enumeration value="element"/>
+			<xs:enumeration value="complexType"/>
+			<xs:enumeration value="value"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConstraintsType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TextsType">
+		<xs:sequence>
+			<xs:element name="Text" type="TextType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TextType">
+		<xs:sequence>
+			<xs:element name="Lang" type="LangType" minOccurs="0"/>
+			<xs:element name="Label" type="LabelType" minOccurs="0"/>
+			<xs:element name="Definition" type="DefinitionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="LangType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LabelType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DefinitionType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EvidenceTypeIdType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HigherEdCertificate"/>
+			<xs:enumeration value="SecondaryEdCertificate"/>
+			<xs:enumeration value="ResidencyProof"/>
+			<xs:enumeration value="BirthCertificate"/>
+			<xs:enumeration value="MarriageCertificate"/>
+			<xs:enumeration value="DeathCertificate "/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IaLevelPathType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IaTotalNumType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="IaOrganisationalStructureType">
+		<xs:sequence>
+			<xs:element name="Element" type="ElementType"/>
+			<!-- Pending its recursive-->
+			<!--xs:element name="Children" type="ElementType" minOccurs="0"/-->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ElementType">
+		<xs:sequence>
+			<xs:element name="AtuLevel" type="AtuLevelType"/>
+			<xs:element name="AtuPath" type="AtuPathType"/>
+			<xs:element name="AtuCode" type="AtuCodeType"/>
+			<xs:element name="AtuName" type="AtuNameType"/>
+			<xs:element name="AtuLatinName" type="AtuLatinNameType"/>
+			<!--xs:element name="Children" type="LabelType" minOccurs="0"/-->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AtuLevelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="nuts1"/>
+			<xs:enumeration value="nuts2"/>
+			<xs:enumeration value="nuts3"/>
+			<xs:enumeration value="lau"/>
+			<xs:enumeration value="university "/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AtuPathType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AtuCodeType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AtuNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AtuLatinNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- End IDK Type  -->
 </xs:schema>
