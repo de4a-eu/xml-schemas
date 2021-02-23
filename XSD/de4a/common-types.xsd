@@ -5,10 +5,8 @@
 	<xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" schemaLocation="../provided/CV-CommonBasicComponents.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/CCTS_CCT_SchemaModule-2.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
-	<xs:import namespace="http://www.de4a.eu/2020/commons/country/iso3166-1" schemaLocation="ISO3166-1-Country-Codes.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">
-		<!--xs:restriction base="isoc:ISO3166-Country-Code"/-->
 		<xs:restriction base="xs:string">
 			<xs:length value="2"/>
 		</xs:restriction>
