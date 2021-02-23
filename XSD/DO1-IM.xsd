@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/owner/pattern/intermediate" xmlns:ct="http://www.de4a.eu/2020/commons/type" targetNamespace="http://www.de4a.eu/2020/data/owner/pattern/intermediate" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
-	<xs:element name="RequestExtractEvidence">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="RequestId" type="ct:RequestIdType"/>
-				<xs:element name="SpecificationId" type="ct:SpecificationIdType"/>
-				<xs:element name="TimeStamp" type="ct:TimeStampType"/>
-				<xs:element name="ProcedureId" type="ct:ProcedureIdType" minOccurs="0"/>
-				<xs:element name="DataEvaluator" type="ct:AgentCVType"/>
-				<xs:element name="DataOwner" type="ct:AgentCVType"/>
-				<xs:element name="DataRequestSubject" type="ct:DataRequestSubjectCVType"/>
-				<xs:element name="RequestGrounds" type="ct:RequestGroundsType"/>
-				<xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
-				<xs:element name="EvidenceServiceData" type="ct:EvidenceServiceDataType"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ResponseExtractEvidence">
-		<xs:complexType>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
-					<xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType" minOccurs="0"/>
-				</xs:sequence>
-				<xs:element name="ErrorList" type="ct:ErrorListType"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
+
+  <xs:complexType name="RequestExtractEvidenceType">
+    <xs:sequence>
+      <xs:element name="RequestId" type="ct:RequestIdType"/>
+      <xs:element name="SpecificationId" type="ct:SpecificationIdType"/>
+      <xs:element name="TimeStamp" type="ct:TimeStampType"/>
+      <xs:element name="ProcedureId" type="ct:ProcedureIdType" minOccurs="0"/>
+      <xs:element name="DataEvaluator" type="ct:AgentCVType"/>
+      <xs:element name="DataOwner" type="ct:AgentCVType"/>
+      <xs:element name="DataRequestSubject" type="ct:DataRequestSubjectCVType"/>
+      <xs:element name="RequestGrounds" type="ct:RequestGroundsType"/>
+      <xs:element name="CanonicalEvidenceId" type="ct:CanonicalEvidenceIdType"/>
+      <xs:element name="EvidenceServiceData" type="ct:EvidenceServiceDataType"/>
+    </xs:sequence>
+  </xs:complexType>
+	<xs:element name="RequestExtractEvidence" type="RequestExtractEvidenceType" />
+
+  <xs:complexType name="ResponseExtractEvidenceType">
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
+        <xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType" minOccurs="0"/>
+      </xs:sequence>
+      <xs:element name="ErrorList" type="ct:ErrorListType"/>
+    </xs:choice>
+  </xs:complexType>
+	<xs:element name="ResponseExtractEvidence" type="ResponseExtractEvidenceType" />
 </xs:schema>
