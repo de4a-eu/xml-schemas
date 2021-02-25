@@ -81,7 +81,6 @@
 	</xs:complexType>
 	<xs:complexType name="DomesticEvidenceType">
 		<xs:sequence>
-			<xs:element name="DomesticEvidenceIdRef" type="IdRefType" minOccurs="0"/>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
 			<xs:element name="MimeType" type="clmIANAMIMEMediaType:BinaryObjectMimeCodeContentType"/>
 			<xs:element name="DataLanguage" type="DataLanguageType"/>
@@ -97,12 +96,6 @@
 			<xs:any namespace="##any" processContents="lax"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="IdRefType">
-  <!-- IDREF can only be used to reference other elements of type "xs:ID" in the same XML file
-    <xs:restriction base="xs:IDREF"/>
-     -->
-    <xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="IssuingTypeType">
 		<xs:restriction base="xs:token">
 			<xs:enumeration value="OriginalIssuing"/>
