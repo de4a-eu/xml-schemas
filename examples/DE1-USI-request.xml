@@ -10,7 +10,6 @@
   </p:CanonicalEvidence>
   <p:DomesticEvidenceList Language="en">
     <p1:DomesticEvidence>
-      <p1:DomesticEvidenceIdRef>id</p1:DomesticEvidenceIdRef>
       <p1:IssuingType>OriginalIssuing</p1:IssuingType>
       <p1:MimeType>application/CSTAdata+xml</p1:MimeType>
       <p1:DataLanguage>EN</p1:DataLanguage>
