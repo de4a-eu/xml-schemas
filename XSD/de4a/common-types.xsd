@@ -486,4 +486,152 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- End IDK Type  -->
+	<!-- Start Interface Types -->
+	<xs:complexType name="RequestTransferEvidenceUSIDTType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentCVType"/>
+			<xs:element name="DataOwner" type="AgentCVType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="PreviewResponse" type="PreviewResponseType"/>
+			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestTransferEvidenceUSIDRType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentCVType"/>
+			<xs:element name="DataOwner" type="AgentCVType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
+			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestTransferEvidenceIMType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentCVType"/>
+			<xs:element name="DataOwner" type="AgentCVType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
+			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestExtractEvidenceUSIType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentCVType"/>
+			<xs:element name="DataOwner" type="AgentCVType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
+			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestExtractEvidenceIMType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentCVType"/>
+			<xs:element name="DataOwner" type="AgentCVType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseExtractEvidenceType">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+				<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+			</xs:sequence>
+			<xs:element name="ErrorList" type="ErrorListType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ResponseTransferEvidenceType">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element name="RequestId" type="RequestIdType"/>
+				<xs:element name="SpecificationId" type="SpecificationIdType"/>
+				<xs:element name="TimeStamp" type="TimeStampType"/>
+				<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+				<xs:element name="DataEvaluator" type="AgentCVType"/>
+				<xs:element name="DataOwner" type="AgentCVType"/>
+				<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+				<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			</xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+					<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="ErrorList" type="ErrorListType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestForwardEvidenceType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="PreviewResponse" type="PreviewResponseType"/>
+			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestLookupRoutingInformationType">
+		<xs:sequence>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="Country" type="CountryType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseLookupRoutingInformationType">
+		<xs:choice>
+			<xs:element name="IssuingAuthority" type="IssuingAuthorityType"/>
+			<xs:element name="EvidenceService" type="EvidenceServiceType"/>
+			<xs:element name="ErrorList" type="ErrorListType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RequestLookupEvidenceServiceDataType">
+		<xs:sequence>
+			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="Country" type="CountryType"/>
+			<xs:element name="AdminTerritorialUnit" type="AdminTerritorialUnitType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseLookupEvidenceServiceDataType">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="EvidenceService" type="EvidenceServiceType"/>
+			</xs:sequence>
+			<xs:element name="ErrorList" type="ErrorListType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ResponseErrorType">
+		<xs:sequence>
+			<xs:element name="Ack" type="AckType"/>
+			<xs:element name="ErrorList" type="ErrorListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- End Interface Types -->
 </xs:schema>

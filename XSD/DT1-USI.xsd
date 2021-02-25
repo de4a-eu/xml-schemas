@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/transferor/pattern/usi" xmlns:ct="http://www.de4a.eu/2020/commons/type" targetNamespace="http://www.de4a.eu/2020/data/transferor/pattern/usi" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
-
-	<xs:complexType name="RequestTransferEvidenceType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="ct:RequestIdType"/>
-			<xs:element name="SpecificationId" type="ct:SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="ct:TimeStampType"/>
-			<xs:element name="ProcedureId" type="ct:ProcedureIdType" minOccurs="0"/>
-			<xs:element name="DataEvaluator" type="ct:AgentCVType"/>
-			<xs:element name="DataOwner" type="ct:AgentCVType"/>
-			<xs:element name="DataRequestSubject" type="ct:DataRequestSubjectCVType"/>
-			<xs:element name="PreviewResponse" type="ct:PreviewResponseType"/>
-			<xs:element name="CanonicalEvidence" type="ct:CanonicalEvidenceType"/>
-			<xs:element name="DomesticEvidenceList" type="ct:DomesticsEvidencesType"/>
-		</xs:sequence>
-	</xs:complexType>
-  <xs:element name="RequestTransferEvidence" type="RequestTransferEvidenceType"/>
-
-	<xs:complexType name="ResponseTransferEvidenceType">
-		<xs:sequence>
-			<xs:element name="Ack" type="ct:AckType"/>
-			<xs:element name="ErrorList" type="ct:ErrorListType"/>
-		</xs:sequence>
-	</xs:complexType>
-  <xs:element name="ResponseTransferEvidence" type="ResponseTransferEvidenceType"/>
+	<xs:element name="RequestTransferEvidence" type="ct:RequestTransferEvidenceUSIDTType"/>
+	<xs:element name="ResponseTransferEvidence" type="ct:ResponseErrorType"/>
 </xs:schema>
