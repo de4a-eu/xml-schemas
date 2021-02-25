@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:udt="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
 	<!-- ===== Imports ===== -->
-	<xsd:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="CCTS_CCT_SchemaModule-2.1.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
 	<!-- ==== Element Declaration ==== -->
 	<xsd:element name="Amount" type="AmountType"/>
 	<xsd:element name="AnyURI" type="AnyURIType"/>

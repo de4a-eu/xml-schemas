@@ -3,7 +3,7 @@
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="../provided/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="../provided/CoreVocabularies-AggregateComponents-1.1.xsd"/>
 	<xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" schemaLocation="../provided/CV-CommonBasicComponents.xsd"/>
-	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/CCTS_CCT_SchemaModule-2.1.xsd"/>
+	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">

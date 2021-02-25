@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.1 OS
-                     http://docs.oasis-open.org/ubl/os-UBL-2.1/
-  Release Date:      04 November 2013
-  Module:            UBL-UnqualifiedDataTypes-2.1.xsd
-  Generated on:      2013-04-20 18:40(UTC)
-  Copyright (c) OASIS Open 2013. All Rights Reserved.
-
-  This schema fragment implements UBL unqualified datatypes using core
+  BDNDR-UnqualifiedDataTypes-1.1.xsd - 10 April 2020
+  
+  This schema fragment implements OASIS BDNDR unqualified datatypes using core
   component types with all supplementary components as described in
   CCTS 2.01 http://www.unece.org/cefact/ebxml/CCTS_V2-01_Final.pdf tables
   8-1, 8-2 and 8-3.
@@ -31,7 +26,7 @@
         Time. Type       on  xsd:time
         Indicator. Type  on  xsd:boolean
 
-  Per UBL 2.0 the following supplementary components are restricted to be
+  Per OASIS BDNDR the following supplementary components are restricted to be
   required rather than optional:
 
    Amount. Currency. Identifier  as  (AmountType)/@currencyID
@@ -46,20 +41,20 @@
   with their supplementary components.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" 
+targetNamespace="urn:oasis:names:specification:bdndr:schema:xsd:UnqualifiedDataTypes-1" 
 xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
             xmlns:ccts="urn:un:unece:uncefact:documentation:2" 
             elementFormDefault="qualified" 
             attributeFormDefault="unqualified"
             version="2.1">
 <!-- ===== Imports ===== -->
-  <xsd:import schemaLocation="CCTS_CCT_SchemaModule-2.1.xsd"
+  <xsd:import schemaLocation="BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"
 namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"/>
 <!-- ===== Type Definitions ===== -->
   <xsd:complexType name="AmountType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000001</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000001</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Amount. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -91,7 +86,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="BinaryObjectType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000002</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000002</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Binary Object. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -123,7 +118,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="GraphicType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000003</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000003</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Graphic. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -155,7 +150,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="PictureType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000004</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000004</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Picture. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -187,7 +182,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="SoundType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000005</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000005</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Sound. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -219,7 +214,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="VideoType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000006</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000006</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Video. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -251,7 +246,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="CodeType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000007</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000007</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Code. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -269,7 +264,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="DateTimeType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000008</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000008</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Date Time. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -287,7 +282,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="DateType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT000009</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT000009</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Date. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -304,7 +299,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="TimeType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000010</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000010</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Time. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -321,7 +316,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="IdentifierType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000011</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000011</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Identifier. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -339,7 +334,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="IndicatorType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000012</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000012</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Indicator. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -356,7 +351,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="MeasureType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000013</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000013</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Measure. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -390,7 +385,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="NumericType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000014</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000014</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Numeric. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -407,7 +402,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="ValueType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000015</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000015</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:VersionID>1.0</ccts:VersionID>
         <ccts:DictionaryEntryName>Value. Type</ccts:DictionaryEntryName>
@@ -424,7 +419,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="PercentType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000016</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000016</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:VersionID>1.0</ccts:VersionID>
         <ccts:DictionaryEntryName>Percent. Type</ccts:DictionaryEntryName>
@@ -441,7 +436,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="RateType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000017</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000017</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:VersionID>1.0</ccts:VersionID>
         <ccts:DictionaryEntryName>Rate. Type</ccts:DictionaryEntryName>
@@ -458,7 +453,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="QuantityType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000018</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000018</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Quantity. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -475,7 +470,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="TextType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000019</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000019</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Text. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
@@ -492,7 +487,7 @@ namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModul
   <xsd:complexType name="NameType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
-        <ccts:UniqueID>UBLUDT0000020</ccts:UniqueID>
+        <ccts:UniqueID>BDNDRUDT0000020</ccts:UniqueID>
         <ccts:CategoryCode>UDT</ccts:CategoryCode>
         <ccts:DictionaryEntryName>Name. Type</ccts:DictionaryEntryName>
         <ccts:VersionID>1.0</ccts:VersionID>
