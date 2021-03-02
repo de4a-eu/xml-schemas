@@ -587,7 +587,7 @@
 	<xs:complexType name="RequestLookupRoutingInformationType">
 		<xs:sequence>
 			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="Country" type="CountryType"/>
+			<xs:element name="CountryCode" type="CountryType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseLookupRoutingInformationType">
@@ -600,7 +600,7 @@
 	<xs:complexType name="RequestLookupEvidenceServiceDataType">
 		<xs:sequence>
 			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="Country" type="CountryType"/>
+			<xs:element name="CountryCode" type="CountryType"/>
 			<xs:element name="AdminTerritorialUnit" type="AdminTerritorialUnitType"/>
 		</xs:sequence>
 	</xs:complexType>
