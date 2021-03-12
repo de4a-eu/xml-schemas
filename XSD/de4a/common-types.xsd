@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
-<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" xmlns:isoc="http://www.de4a.eu/2020/commons/country/iso3166-1" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" xmlns:isoc="http://www.de4a.eu/2020/commons/country/iso3166-1" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="../provided/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="../provided/CoreVocabularies-AggregateComponents-1.1.xsd"/>
 	<xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" schemaLocation="../provided/CV-CommonBasicComponents.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../provided/xml.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
 	<xs:simpleType name="CountryType">
 		<xs:restriction base="xs:string">
@@ -78,7 +79,7 @@
 		<xs:sequence>
 			<xs:element name="DomesticEvidence" type="DomesticEvidenceType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+		<xs:attribute ref="xml:lang" use="optional" default="en"/>
 	</xs:complexType>
 	<xs:complexType name="DomesticEvidenceType">
 		<xs:sequence>
@@ -135,7 +136,7 @@
 		<xs:sequence>
 			<xs:element name="AdminTerritorialUnit" type="AdminTerritorialUnitType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+		<xs:attribute ref="xml:lang" use="optional" default="en"/>
 	</xs:complexType>
 	<xs:simpleType name="AdminLevelType">
 		<xs:restriction base="xs:string">
@@ -165,7 +166,7 @@
 			<xs:element name="Type" type="ServiceInputParameterTypeType"/>
 			<xs:element name="Value" type="ServiceInputParameterValueType"/>
 		</xs:sequence>
-		<xs:attribute name="Language" type="xs:language" use="optional" default="en"/>
+		<xs:attribute ref="xml:lang" use="optional" default="en"/>
 	</xs:complexType>
 	<xs:simpleType name="ServiceInputParameterLabelType">
 		<xs:restriction base="xs:string">
