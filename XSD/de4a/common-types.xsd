@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" xmlns:cdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" xmlns:isoc="http://www.de4a.eu/2020/commons/country/iso3166-1" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="https://semic.org/sa/cv/cagv/agent-2.0.0#" schemaLocation="../provided/CV-Agent.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/corevocabulary/AggregateComponents" schemaLocation="../provided/CoreVocabularies-AggregateComponents-1.1.xsd"/>
@@ -498,7 +499,7 @@
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="PreviewResponse" type="PreviewResponseType"/>
 			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType"/>
+			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestTransferEvidenceUSIIMDRType">
@@ -581,7 +582,7 @@
 			<xs:element name="TimeStamp" type="TimeStampType"/>
 			<xs:element name="PreviewResponse" type="PreviewResponseType"/>
 			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType"/>
+			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
