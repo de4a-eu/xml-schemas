@@ -21,13 +21,13 @@
 	</xs:complexType>
 	<!-- End Natural Person CV -->
 	<!-- Start Legal Person CV-->
-	<xs:complexType name="LegalEntityIdentifierType">
+	<xs:complexType name="CompanyIdentifierType">
 		<xs:annotation>
 			<xs:documentation>Legal Entity eIDAS mandatory dataset and optional dataset</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="LegalEntityIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="LegalEntityName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompanyIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CompanyName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0" maxOccurs="1"/>

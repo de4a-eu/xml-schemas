@@ -205,7 +205,7 @@
 		<xs:sequence>
 			<xs:choice minOccurs="1" maxOccurs="1">
 				<xs:element name="DataSubjectPerson" type="cit:NaturalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-				<xs:element name="DataSubjectCompany" type="cit:LegalEntityIdentifierType" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="DataSubjectCompany" type="cit:CompanyIdentifierType" minOccurs="1" maxOccurs="1"/>
 			</xs:choice>
 			<xs:element name="DataSubjectRepresentative" type="cit:NaturalPersonIdentifierType" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
