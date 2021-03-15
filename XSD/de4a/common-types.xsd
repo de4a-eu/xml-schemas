@@ -280,6 +280,7 @@
 		<xs:sequence>
 			<xs:element ref="cbc:id"/>
 			<xs:element ref="cbc:name"/>
+			<xs:element name="RedirectURL" type="RedirectURLType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- End Agent CV -->
@@ -513,7 +514,7 @@
 			<xs:element name="DataOwner" type="AgentCVType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
 			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
 		</xs:sequence>
@@ -528,7 +529,7 @@
 			<xs:element name="DataOwner" type="AgentCVType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
 			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
 		</xs:sequence>
@@ -543,7 +544,7 @@
 			<xs:element name="DataOwner" type="AgentCVType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="EvidenceServiceData" type="EvidenceServiceDataType"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -566,7 +567,7 @@
 				<xs:element name="DataEvaluator" type="AgentCVType"/>
 				<xs:element name="DataOwner" type="AgentCVType"/>
 				<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-				<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+				<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			</xs:sequence>
 			<xs:choice>
 				<xs:sequence>
@@ -588,7 +589,7 @@
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
 		<xs:sequence>
-			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="CountryCode" type="CountryType"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -601,7 +602,7 @@
 	</xs:complexType>
 	<xs:complexType name="RequestLookupEvidenceServiceDataType">
 		<xs:sequence>
-			<xs:element name="CanonicalEvidenceId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="CountryCode" type="CountryType"/>
 			<xs:element name="AdminTerritorialUnit" type="AdminTerritorialUnitType"/>
 		</xs:sequence>
