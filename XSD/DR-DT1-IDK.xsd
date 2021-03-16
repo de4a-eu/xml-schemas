@@ -3,6 +3,4 @@
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
 	<xs:element name="RequestLookupRoutingInformation" type="ct:RequestLookupRoutingInformationType"/>
 	<xs:element name="ResponseLookupRoutingInformation" type="ct:ResponseLookupRoutingInformationType"/>
-	<xs:element name="RequestLookupEvidenceServiceData" type="ct:RequestLookupEvidenceServiceDataType"/>
-	<xs:element name="ResponseLookupEvidenceServiceData" type="ct:ResponseLookupEvidenceServiceDataType"/>
 </xs:schema>
