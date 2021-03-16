@@ -9,8 +9,8 @@
 				Natural Person eIDAS mandatory dataset and optional dataset</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Identifier" type="ein:PersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="GivenName" type="ein:CurrentGivenNameType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PersonIdentifier" type="ein:PersonIdentifierType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="FirstName" type="ein:CurrentGivenNameType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="FamilyName" type="ein:CurrentFamilyNameType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="DateOfBirth" type="ein:DateOfBirthType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Gender" type="ein:GenderType" minOccurs="0" maxOccurs="1"/>
@@ -21,13 +21,13 @@
 	</xs:complexType>
 	<!-- End Natural Person CV -->
 	<!-- Start Legal Person CV-->
-	<xs:complexType name="CompanyIdentifierType">
+	<xs:complexType name="LegalPersonIdentifierType">
 		<xs:annotation>
 			<xs:documentation>Legal Entity eIDAS mandatory dataset and optional dataset</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="CompanyIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="CompanyName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LegalPersonIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LegalName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0" maxOccurs="1"/>
