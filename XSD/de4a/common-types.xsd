@@ -205,12 +205,12 @@
 	</xs:simpleType>
 	<!-- End Agent Type -->
 	<!-- Start New IDK -->
-	<xs:complexType name="AvaliableSourcesType">
+	<xs:complexType name="AvailableSourcesType">
 		<xs:sequence>
-			<xs:element name="Source" type="SourcesType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Source" type="SourceType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="SourcesType">
+	<xs:complexType name="SourceType">
 		<xs:sequence>
 			<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
 			<xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
@@ -572,7 +572,7 @@
 	</xs:complexType>
 	<xs:complexType name="ResponseLookupRoutingInformationType">
 		<xs:choice>
-			<xs:element name="AvaliableSources" type="AvaliableSourcesType"/>
+			<xs:element name="AvailableSources" type="AvailableSourcesType"/>
 			<xs:element name="ErrorList" type="ErrorListType"/>
 		</xs:choice>
 	</xs:complexType>
