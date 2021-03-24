@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns="urn:eu-de4a:xsd:CanonicalEvidenceType::CompanyRegistration:v0.6"
+           targetNamespace="urn:eu-de4a:xsd:CanonicalEvidenceType::CompanyRegistration:v0.6"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents">
+  <!-- Import xml: namespace -->
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- Import W3C Core Vocabularies basic elements -->
+  <xs:import namespace="http://www.w3.org/ns/corevocabulary/BasicComponents" schemaLocation="CoreVocabularies-BasicComponents-1.1.xsd" />
+  
+  <!-- xml schema for CompanyInfo canonical evidence -->
+  
+  <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:complexType name="LegalEntityType">
+    <xs:annotation>
+      <xs:documentation>
+        Company's legal information
+        - CompanyName: This is the primary name of the company. Can be provided for multiple languages.
+        - CompanyType: Type of the company based on ISO 20275 (e.g: SA, PLC, LLC, GmbH etc) 
+        - CompanyStatus: Company status as defined in BRIS (closed, struck off the register, wound up, dissolved, economically active or inactive)
+        - CompanyActivity: The activity of a company 
+        - RegistrationDate: Date of registration of the company
+        - CompanyEndDate: The company end date
+        - CompanyEUID: Identification of the company following the BRIS-structure: country code + register identifier + registration number + verification digit (optional)
+        - VatNumber: The VAT registration number of the company
+        - CompanyContactData: the contact information of the company (email and Telephone)
+        - RegisteredAddress: Links a Legal Entity to its registered address. 
+        - PostalAddress: Company physical address
+        - HasBranch: The branch information
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:sequence>
+      <xs:element name="CompanyName" type="NamesType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="CompanyType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="CompanyStatus" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="CompanyActivity" type="ActivityType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="RegistrationDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="CompanyEndDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="CompanyEUID" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="VatNumber" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="CompanyContactData" type="ContactPointType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RegisteredAddress" type="AddressType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="PostalAddress" type="AddressType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="HasBranch" type="BranchType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ContactPointType">
+    <xs:annotation>
+      <xs:documentation>
+        - Email: A valid email address of the company
+        - Telephone: Telephone number of the company
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:sequence>
+      <xs:element name="Email" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Telephone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ActivityType">
+    <xs:annotation>
+      <xs:documentation>
+        - NaceCode: NACE-code of the company’s activities
+        - ActivityDescription: Description of the activity
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:choice>
+      <xs:element name="NaceCode" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="ActivityDescription" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="BranchType">
+    <xs:annotation>
+      <xs:documentation>
+        - BranchName: Primary name of the branch. Can be provided for multiple languages
+        - BranchEUID: Identification of the branch of the company following the BRIS-structure: country code + register identifier + registration number + verification digit (optional)
+        - BranchActivity: The activity of the branch presented by the NACE code and description
+        - BranchRegistredAddress: The legal registered address of the branch  
+        - BranchPostalAddress: The Physical address of the branch
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:sequence>
+      <xs:element name="BranchName" type="NamesType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="BranchEUID" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="BranchActivity" type="ActivityType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="BranchRegistredAddress" type="AddressType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="BranchPostalAddress" type="AddressType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AddressType">
+    <xs:annotation>
+      <xs:documentation>
+        - PoBox: The Post Office Box number
+        - Thoroughfare: The Street name
+        - LocationDesignator: House number   
+        - PostCode:  Postal code / zip code
+        - PostName: City
+        - AdminUnitL2: Administration unit Level2 - County / region / state
+        - AdminUnitL1: Country
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:sequence>
+      <xs:element name="PoBox" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Thoroughfare" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LocationDesignator" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PostCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PostName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AdminUnitL1" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AdminUnitL2" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute ref="xml:lang" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="NamesType">
+    <xs:annotation>
+      <xs:documentation>
+        - LegalEntityName: Legal name of the company
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="cvb:LegalEntityLegalName" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
