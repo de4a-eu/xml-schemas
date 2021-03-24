@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
@@ -30,9 +31,6 @@
 			<xs:minLength value="3"/>
 			<xs:maxLength value="20"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ReturnServiceIdType">
-		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<xs:simpleType name="CanonicalEvidenceIdType">
 		<xs:restriction base="IdType"/>
@@ -109,7 +107,7 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Date"/>
-			<xs:enumeration value="InputeText"/>
+			<xs:enumeration value="InputText"/>
 			<xs:enumeration value="YesNo"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -220,10 +218,9 @@
 			<xs:choice>
 				<xs:sequence>
 					<xs:element name="NumProvisions" type="NumProvisionsType"/>
-					<xs:element name="AtuLevel" type="AtuLevelType"/>
 					<xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
 				</xs:sequence>
-				<xs:element name="ProvisionsItem" type="ProvisionsItemType" minOccurs="0"/>
+				<xs:element name="ProvisionsItem" type="ProvisionsItemType"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -233,22 +230,20 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProvisionItemType">
-		<xs:choice>
-			<xs:sequence>
-				<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-				<xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
-				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-				<xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType"/>
-				<xs:element name="Provision" type="ProvisionType"/>
-			</xs:sequence>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+			<xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
+			<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+			<xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
+			<xs:element name="Provision" type="ProvisionType"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProvisionType">
 		<xs:sequence>
 			<xs:element name="ProvisionType" type="ProvisionTypeType"/>
 			<xs:choice>
 				<xs:element name="RedirectURL" type="RedirectURLType"/>
-				<xs:element name="Params" type="ParamsType"/>
+				<xs:element name="Params" type="ParamsType" minOccurs="0"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -438,16 +433,6 @@
 			<xs:maxLength value="250"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="EvidenceTypeIdType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="HigherEdCertificate"/>
-			<xs:enumeration value="SecondaryEdCertificate"/>
-			<xs:enumeration value="ResidencyProof"/>
-			<xs:enumeration value="BirthCertificate"/>
-			<xs:enumeration value="MarriageCertificate"/>
-			<xs:enumeration value="DeathCertificate "/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="IaLevelPathType">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
@@ -471,12 +456,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="AtuCodeType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AtuNameType">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="250"/>
@@ -515,7 +494,6 @@
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
-			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestExtractEvidenceUSIType">
@@ -530,7 +508,6 @@
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
-			<xs:element name="ReturnServiceId" type="ReturnServiceIdType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestExtractEvidenceIMType">
@@ -587,7 +564,7 @@
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
 		<xs:sequence>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceidkType"/>
 			<xs:choice>
 				<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
 				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
