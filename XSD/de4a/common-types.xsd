@@ -563,7 +563,7 @@
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
 		<xs:sequence>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceidkType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:choice>
 				<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
 				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
