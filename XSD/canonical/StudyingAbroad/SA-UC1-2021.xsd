@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:cred="http://data.europa.eu/europass/model/credentials/w3c#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:sa="https://data.europe.eu/de4a/model/studying-abroad/" xmlns:edci="http://data.europa.eu/europass/model/credentials#" targetNamespace="https://data.europe.eu/de4a/model/studying-abroad/">
+	<xsd:import namespace="http://data.europa.eu/europass/model/credentials#" schemaLocation="provided/edci_simpleContentTypes.xsd"/>
+	<xsd:import namespace="http://data.europa.eu/europass/model/credentials#" schemaLocation="provided/edci_credentialTypes.xsd"/>
+	<!--<xsd:import namespace="http://data.europa.eu/europass/model/credentials#" schemaLocation="edci_agent.xsd"/>-->
+	<xsd:import namespace="http://www.w3.org/ns/corevocabulary/BasicComponents" schemaLocation="provided/CoreVocabularyBasicComponents-v1.00.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="common/UBL-CommonBasicComponents-2.0.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" schemaLocation="common/UnqualifiedDataTypeSchemaModule-2.0.xsd"/>
+	<xsd:element name="HigherEducationEvidence" type="sa:HigherEducationEvidenceType"/>
+	<xsd:complexType name="HigherEducationEvidenceType">
+		<xsd:complexContent>
+			<xsd:extension base="edci:AchievementType">
+				<xsd:sequence>
+					<xsd:element name="degree" type="edci:TextType" minOccurs="1" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>An academic title or degree obtained by the student and proven by this diploma or certificate (evidence)</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="country" type="edci:MDRCountryCodeEnumType" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>Country where the study programme was completed by the student</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="institutionName" type="edci:TextType" minOccurs="1" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>The name of the higher education institution where the student obtained the degree</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="studyProgramme" type="edci:TextType" minOccurs="1" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Name of a study programme that the student finished at the higher education institution in order to obtain the degree</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="mainFieldOfStudy" type="edci:IscedFOetCodeEnumType" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>Field of finished higher education</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="modeOfStudy" type="sa:ModeOfStudy" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>Mode of study, (full time, part time, distance learning)</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="durationOfEducation" type="udt:NumericType" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>Official duration of education in years</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="scope" type="udt:NumericType" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>The official workload of the study programme in the ECTS (European Credit Transfer and Accumulation System) credit points</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="dateOfIssue" type="cbc:DateType" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>Date of issue of the certificate or diploma</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="placeOfIssue" type="edci:TextType" minOccurs="1" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Place of issue (location) of the certificate or diploma</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="holderOfAchievement" type="edci:PersonType" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--	<xsd:complexType name="achievedType">
+		<xsd:sequence>
+			<xsd:element name="achievement" type="HigherEducationEvidenceType"/>
+		</xsd:sequence>
+	</xsd:complexType>-->
+	<!--	<xsd:complexType name="SAPersonType">
+		<xsd:complexContent>
+			<xsd:extension base="edci:PersonType">
+				<xsd:sequence>
+					<xsd:element name="achieved" type="achievedType"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType-->
+	<xsd:simpleType name="ModeOfStudy">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="distance learning"/>
+			<xsd:enumeration value="full time"/>
+			<xsd:enumeration value="part time"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
