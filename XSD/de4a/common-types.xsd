@@ -80,27 +80,27 @@
 	</xs:simpleType>
 	<!-- Ends Evidences -->
 	<!-- Starts Others -->
-	<xs:complexType name="ServiceInputParametersType">
+	<xs:complexType name="AdditionalParametersType">
 		<xs:sequence>
-			<xs:element name="ServiceInputParameter" type="ServiceInputParameterType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="AdditionalParameter" type="AdditionalParameterType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="ServiceInputParameterType">
+	<xs:complexType name="AdditionalParameterType">
 		<xs:sequence>
-			<xs:element name="Label" type="ServiceInputParameterLabelType"/>
-			<xs:element name="Type" type="ServiceInputParameterTypeType"/>
-			<xs:element name="Value" type="ServiceInputParameterValueType"/>
+			<xs:element name="Label" type="AdditionalParameterLabelType"/>
+			<xs:element name="Type" type="AdditionalParameterTypeType"/>
+			<xs:element name="Value" type="AdditionalParameterValueType"/>
 		</xs:sequence>
 		<xs:attribute ref="xml:lang" use="optional" default="en"/>
 	</xs:complexType>
-	<xs:simpleType name="ServiceInputParameterLabelType">
+	<xs:simpleType name="AdditionalParameterLabelType">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="100"/>
 			<xs:whiteSpace value="collapse"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ServiceInputParameterTypeType">
+	<xs:simpleType name="AdditionalParameterTypeType">
 		<xs:annotation>
 			<xs:documentation>Its posiblle add more enumerations elements</xs:documentation>
 		</xs:annotation>
@@ -110,7 +110,7 @@
 			<xs:enumeration value="YesNo"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ServiceInputParameterValueType">
+	<xs:simpleType name="AdditionalParameterValueType">
 		<xs:annotation>
 			<xs:documentation>Parametter value </xs:documentation>
 		</xs:annotation>
@@ -219,11 +219,11 @@
 					<xs:element name="NumProvisions" type="NumProvisionsType"/>
 					<xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
 				</xs:sequence>
-				<xs:element name="ProvisionsItem" type="ProvisionsItemType"/>
+				<xs:element name="ProvisionItems" type="ProvisionItemsType"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="ProvisionsItemType">
+	<xs:complexType name="ProvisionItemsType">
 		<xs:sequence>
 			<xs:element name="ProvisionItem" type="ProvisionItemType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
@@ -278,10 +278,10 @@
 	<xs:complexType name="ParamType">
 		<xs:sequence>
 			<xs:element name="Title" type="TitleType"/>
-			<xs:element name="ParamsSet" type="ParamsSetType"/>
+			<xs:element name="ParamSets" type="ParamSetsType"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="ParamsSetType">
+	<xs:complexType name="ParamSetsType">
 		<xs:sequence>
 			<xs:element name="ParamSet" type="ParamSetType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
@@ -492,7 +492,7 @@
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
+			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestExtractEvidenceUSIType">
@@ -506,7 +506,7 @@
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
+			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestExtractEvidenceIMType">
@@ -520,7 +520,7 @@
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="ServiceInputParameters" type="ServiceInputParametersType" minOccurs="0"/>
+			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseExtractEvidenceType">
