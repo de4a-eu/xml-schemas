@@ -30,11 +30,11 @@
     <p1:LawELIPermanentLink>http://tempuri.org</p1:LawELIPermanentLink>
   </p1:RequestGrounds>
   <p1:CanonicalEvidenceTypeId>p1:CanonicalEvidenceId</p1:CanonicalEvidenceTypeId>
-  <p1:ServiceInputParameters>
-    <p1:ServiceInputParameter xml:lang="en">
+  <p1:AdditionalParameters>
+    <p1:AdditionalParameter xml:lang="en">
       <p1:Label>p1:Label</p1:Label>
       <p1:Type>Date</p1:Type>
       <p1:Value>p1:Value</p1:Value>
-    </p1:ServiceInputParameter>
-  </p1:ServiceInputParameters>
+    </p1:AdditionalParameter>
+  </p1:AdditionalParameters>
 </p:RequestTransferEvidence>
