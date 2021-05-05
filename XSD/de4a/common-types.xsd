@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
 	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
@@ -477,8 +477,13 @@
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+					<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="ErrorList" type="ErrorListType"/>
+			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestTransferEvidenceUSIIMDRType">
@@ -557,8 +562,13 @@
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="TimeStamp" type="TimeStampType"/>
-			<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-			<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+					<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="ErrorList" type="ErrorListType"/>
+			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
