@@ -299,11 +299,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="CanonicalEvidenceidkType">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="HigherEdCertificate"/>
-			<xs:enumeration value="SecondaryEdCertificate"/>
-			<xs:enumeration value="ResidencyProof"/>
+			<xs:enumeration value="HigherEducationDiploma"/>
+			<xs:enumeration value="DomicileRegistrationEvidence"/>
 			<xs:enumeration value="BirthCertificate"/>
-			<xs:enumeration value="MarriageCertificate"/>
+			<xs:enumeration value="MarriageEvidence"/>
 			<xs:enumeration value="CompanyRegistration"/>
 		</xs:restriction>
 	</xs:simpleType>
