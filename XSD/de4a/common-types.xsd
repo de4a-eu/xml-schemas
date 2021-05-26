@@ -153,6 +153,13 @@
 			<xs:whiteSpace value="collapse"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="EvidenceStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Agree"/>
+			<xs:enumeration value="Disagree"/>
+			<xs:enumeration value="Error"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!-- Ends Others -->
 	<!-- Start Error types -->
 	<xs:complexType name="ErrorListType">
@@ -588,10 +595,14 @@
 	<xs:complexType name="RequestUserRedirectionType">
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:choice>
-				<xs:element name="RedirectURL" type="RedirectURLType"/>
-				<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
-			</xs:choice>
+			<xs:element name="RedirectURL" type="RedirectURLType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseUserRedirectionType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="EvidenceStatus" type="EvidenceStatusType"/>
+			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseErrorType">
