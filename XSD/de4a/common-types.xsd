@@ -585,6 +585,15 @@
 			<xs:element name="ErrorList" type="ErrorListType"/>
 		</xs:choice>
 	</xs:complexType>
+	<xs:complexType name="RequestUserRedirectionType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:choice>
+				<xs:element name="RedirectURL" type="RedirectURLType"/>
+				<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="ResponseErrorType">
 		<xs:sequence>
 			<xs:element name="Ack" type="AckType"/>
