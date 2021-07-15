@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/evaluator/pattern/usi" xmlns:ct="http://www.de4a.eu/2020/commons/type" targetNamespace="http://www.de4a.eu/2020/data/evaluator/pattern/usi" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
-	<xs:element name="RequestUserRedirection" type="ct:RequestUserRedirectionType"/>
-	<xs:element name="ResponseUserRedirection" type="ct:ResponseUserRedirectionType"/>
+	<!-- [ab] should this be moved to one of the other xsd files? -->
+	<xs:element name="RedirectUser" type="ct:RedirectUserType"/>
 </xs:schema>

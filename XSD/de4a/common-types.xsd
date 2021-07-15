@@ -247,10 +247,7 @@
 	<xs:complexType name="ProvisionType">
 		<xs:sequence>
 			<xs:element name="ProvisionType" type="ProvisionTypeType"/>
-			<xs:choice>
-				<xs:element name="RedirectURL" type="RedirectURLType"/>
-				<xs:element name="Params" type="ParamsType" minOccurs="0"/>
-			</xs:choice>
+			<xs:element name="Params" type="ParamsType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="NumProvisionsType">
@@ -592,18 +589,22 @@
 			<xs:element name="ErrorList" type="ErrorListType"/>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="RequestUserRedirectionType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="RedirectURL" type="RedirectURLType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseUserRedirectionType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="EvidenceStatus" type="EvidenceStatusType"/>
-			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
-		</xs:sequence>
+	<xs:complexType name="RedirectUserType">
+		<xs:element name="RequestId" type="RequestIdType"/>
+		<!-- [ab] is it needed? 
+		<xs:element name="SpecificationId" type="SpecificationIdType"/>
+		-->
+		<xs:element name="TimeStamp" type="TimeStampType"/>
+		<!-- [ab] is it needed? 
+		<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+		-->
+		<xs:element name="DataEvaluator" type="AgentType"/>
+		<!-- [ab] is it needed? 
+		<xs:element name="DataOwner" type="AgentType"/> 
+		-->
+		<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+		<xs:element name="RedirectUrl" type="RedirectURLType"/>
+		<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
 	</xs:complexType>
 	<xs:complexType name="ResponseErrorType">
 		<xs:sequence>
