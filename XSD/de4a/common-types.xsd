@@ -308,7 +308,7 @@
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="HigherEducationDiploma"/>
 			<xs:enumeration value="DomicileRegistrationEvidence"/>
-			<xs:enumeration value="BirthCertificate"/>
+			<xs:enumeration value="BirthEvidence"/>
 			<xs:enumeration value="MarriageEvidence"/>
 			<xs:enumeration value="CompanyRegistration"/>
 		</xs:restriction>
