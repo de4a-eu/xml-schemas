@@ -555,13 +555,15 @@
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="RedirectUserType">
-		<xs:element name="RequestId" type="RequestIdType"/>
-		<xs:element name="SpecificationId" type="SpecificationIdType"/>
-		<xs:element name="TimeStamp" type="TimeStampType"/>
-		<xs:element name="DataEvaluator" type="AgentType"/>
-		<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-		<xs:element name="RedirectUrl" type="RedirectURLType"/>
-		<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+    <xs:sequence>
+      <xs:element name="RequestId" type="RequestIdType"/>
+      <xs:element name="SpecificationId" type="SpecificationIdType"/>
+      <xs:element name="TimeStamp" type="TimeStampType"/>
+      <xs:element name="DataEvaluator" type="AgentType"/>
+      <xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+      <xs:element name="RedirectUrl" type="RedirectURLType"/>
+      <xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+    </xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseErrorType">
 		<xs:sequence>
