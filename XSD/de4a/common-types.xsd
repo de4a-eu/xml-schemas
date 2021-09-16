@@ -102,7 +102,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="AdditionalParameterTypeType">
 		<xs:annotation>
-			<xs:documentation>Its posiblle add more enumerations elements</xs:documentation>
+			<xs:documentation>It's possible add more enumerations elements</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Date"/>
