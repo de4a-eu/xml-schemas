@@ -112,7 +112,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="AdditionalParameterValueType">
 		<xs:annotation>
-			<xs:documentation>Parametter value </xs:documentation>
+			<xs:documentation>Parameter value </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
@@ -454,35 +454,15 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="RequestTransferEvidenceUSIIMDRType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
-			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
-			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RequestExtractEvidenceUSIType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
-			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
-			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RequestExtractEvidenceIMType">
+  <!--
+  Was merged from
+    RequestTransferEvidenceUSIIMDRType
+    RequestExtractEvidenceUSIType
+    RequestExtractEvidenceIMType
+  to
+    RequestTransferEvidenceType 
+   -->
+	<xs:complexType name="RequestTransferEvidenceType">
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
