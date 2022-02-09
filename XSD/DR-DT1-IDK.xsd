@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.de4a.eu/2020/data/requestor/idk" xmlns:ct="http://www.de4a.eu/2020/commons/type" targetNamespace="http://www.de4a.eu/2020/data/requestor/idk" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
-	<xs:element name="RequestLookupRoutingInformation" type="ct:RequestLookupRoutingInformationType"/>
-	<xs:element name="ResponseLookupRoutingInformation" type="ct:ResponseLookupRoutingInformationType"/>
-</xs:schema>

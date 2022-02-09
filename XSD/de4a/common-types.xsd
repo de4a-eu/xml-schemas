@@ -48,6 +48,14 @@
 		</xs:annotation>
 		<xs:restriction base="xs:dateTime"/>
 	</xs:simpleType>
+
+	<xs:complexType name="TimePeriodType">
+		<xs:sequence>
+			<xs:element name="StartDate" type="TimeStampType" minOccurs="1"/>
+			<xs:element name="EndDate" type="TimeStampType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
 	<!-- Starts Evidences -->
 	<xs:complexType name="CanonicalEvidenceType">
 		<xs:sequence>
@@ -128,7 +136,7 @@
 			<xs:element name="DataSubjectRepresentative" type="cit:NaturalPersonIdentifierType" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="RequestGroundsType">
+        <xs:complexType name="RequestGroundsType">
 		<xs:choice minOccurs="1" maxOccurs="1">
 			<xs:element name="LawELIPermanentLink" type="LawELIPermanentLinkType"/>
 			<xs:element name="ExplicitRequest" type="ExplicitRequestType"/>
@@ -241,7 +249,16 @@
 			<xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
 			<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
 			<xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
+			<xs:element name="Details" type="ProvisionDetailstype"/>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProvisionDetailstype">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
+				<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:choice>
 	</xs:complexType>
 	<xs:simpleType name="NumProvisionsType">
 		<xs:restriction base="xs:integer">
@@ -435,15 +452,71 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- End IDK Type  -->
-	<!-- Start Interface Types -->
-	<xs:complexType name="RequestTransferEvidenceUSIDTType">
+
+	<!--
+            New types iteration 2
+            START
+        -->
+	<!-- REQUEST ITEMS -->
+	<xs:complexType name="RequestEvidenceItemType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
-			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
+			<xs:element name="RequestItemId" type="IdType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
+			<xs:element name="AdditionalParameter" maxOccurs="unbounded"
+                                    minOccurs="0" type="AdditionalParameterType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestEvidenceLUItemType">
+		<xs:complexContent>
+			<xs:extension base="RequestEvidenceItemType">
+				<xs:sequence>
+					<xs:element name="EventNotificationRef" type="UUIDType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequestEvidenceUSIItemType">
+		<xs:complexContent>
+			<xs:extension base="RequestEvidenceItemType">
+				<xs:sequence>
+					<xs:element name="DataEvaluatorURL" type="xs:anyURI"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventSubscripRequestItemType">
+		<xs:sequence>
+			<xs:element name="RequestItemId" type="IdType"/>
+			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+			<xs:element name="SubscriptionPeriod" type="TimePeriodType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoutingEvidenceInformationItemType">
+		<xs:sequence>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoutingEventInformationItemType">
+		<xs:sequence>
+			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+			<xs:choice>
+				<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
+				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- END REQUEST ITEMS -->
+	<!-- RESPONSE ITEMS -->
+	<xs:complexType name="ResponseExtractEvidenceItemType">
+		<xs:sequence>
+			<xs:element name="RequestItemId" type="IdType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:choice>
 				<xs:sequence>
@@ -454,13 +527,164 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="ResponseEventSubscriptionItemType">
+		<xs:sequence>
+			<xs:element name="RequestItemId" type="IdType"/>
+			<xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventNotificationItemType">
+		<xs:sequence>
+			<xs:element name="NotificationItemId" type="IdType"/>
+			<xs:element name="EventId" type="xs:token"/>
+			<xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
+			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+			<xs:element name="EventDate" type="TimeStampType"/>
+			<xs:element name="RelatedEventSubject"
+				type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- END RESPONSE ITEMS -->
+	<!-- REQUESTS -->
+	<xs:complexType name="RequestExtractMultiEvidenceType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+			<xs:element name="DataEvaluator" type="AgentType"/>
+			<xs:element name="DataOwner" type="AgentType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestExtractMultiEvidenceIMType">
+		<xs:complexContent>
+			<xs:extension base="RequestExtractMultiEvidenceType">
+				<xs:sequence>
+					<xs:element name="RequestEvidenceIMItem"
+                                                    type="RequestEvidenceItemType" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequestExtractMultiEvidenceUSIType">
+		<xs:complexContent>
+			<xs:extension base="RequestExtractMultiEvidenceType">
+				<xs:sequence>
+					<xs:element name="RequestEvidenceUSIItem"
+                                                    type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequestExtractMultiEvidenceLUType">
+		<xs:complexContent>
+			<xs:extension base="RequestExtractMultiEvidenceType">
+				<xs:sequence>
+					<xs:element name="RequestEvidenceLUItem"
+                                                    type="RequestEvidenceLUItemType" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequestEventSubscriptionType">
+		<xs:complexContent>
+			<xs:extension base="RequestExtractMultiEvidenceType">
+				<xs:sequence>
+					<xs:element name="EventSubscripRequestItem"
+                                                    type="EventSubscripRequestItemType" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequestLookupRoutingInformationType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="RoutingEvidenceInformationItem"
+                                            type="RoutingEvidenceInformationItemType" />
+				<xs:element name="RoutingEventInformationItem"
+                                            type="RoutingEventInformationItemType" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- END REQUESTS -->
+	<!-- RESPONSES -->
+	<xs:complexType name="ResponseBaseType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="DataEvaluator" type="AgentType"/>
+			<xs:element name="DataOwner" type="AgentType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseErrorType">
+		<xs:sequence>
+			<xs:element name="Ack" type="AckType"/>
+			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseExtractMultiEvidenceType">
+		<xs:complexContent>
+			<xs:extension base="ResponseBaseType">
+				<xs:sequence>
+					<xs:element name="ResponseExtractEvidenceItem"
+                                                    type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ResponseEventSubscriptionType">
+		<xs:complexContent>
+			<xs:extension base="ResponseBaseType">
+				<xs:sequence>
+					<xs:element name="ResponseEventSubscriptionItem"
+                                                    type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventNotificationType">
+		<xs:sequence>
+			<xs:element name="NotificationId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="DataEvaluator" type="AgentType"/>
+			<xs:element name="DataOwner" type="AgentType"/>
+			<xs:sequence>
+				<xs:element name="EventNotificationItem"
+                                                 type="EventNotificationItemType" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RedirectUserType">
+		<xs:sequence>
+			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="DataEvaluator" type="AgentType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="RedirectUrl" type="RedirectURLType"/>
+			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseLookupRoutingInformationType">
+		<xs:choice>
+			<xs:element name="AvailableSources" type="AvailableSourcesType"/>
+			<xs:element name="ErrorList" type="ErrorListType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!-- END RESPONSES -->
+	<!--
+            New types iteration 2
+            ENDS
+        -->
+
   <!--
   Was merged from
     RequestTransferEvidenceUSIIMDRType
     RequestExtractEvidenceUSIType
     RequestExtractEvidenceIMType
   to
-    RequestExtractEvidenceType 
+    RequestExtractEvidenceType
    -->
 	<xs:complexType name="RequestExtractEvidenceType">
 		<xs:sequence>
@@ -515,38 +739,6 @@
 				</xs:sequence>
 				<xs:element name="ErrorList" type="ErrorListType"/>
 			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RequestLookupRoutingInformationType">
-		<xs:sequence>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-			<xs:choice>
-				<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseLookupRoutingInformationType">
-		<xs:choice>
-			<xs:element name="AvailableSources" type="AvailableSourcesType"/>
-			<xs:element name="ErrorList" type="ErrorListType"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="RedirectUserType">
-    <xs:sequence>
-      <xs:element name="RequestId" type="RequestIdType"/>
-      <xs:element name="SpecificationId" type="SpecificationIdType"/>
-      <xs:element name="TimeStamp" type="TimeStampType"/>
-      <xs:element name="DataEvaluator" type="AgentType"/>
-      <xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
-      <xs:element name="RedirectUrl" type="RedirectURLType"/>
-      <xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
-    </xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseErrorType">
-		<xs:sequence>
-			<xs:element name="Ack" type="AckType"/>
-			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- End Interface Types -->

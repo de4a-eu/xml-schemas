@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.de4a.eu/2020/data/owner"
+	xmlns:ct="http://www.de4a.eu/2020/commons/type"
+           targetNamespace="http://www.de4a.eu/2020/data/owner" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
+
+	<xs:element name="RequestExtractMultiEvidenceIM" type="ct:RequestExtractMultiEvidenceIMType"/>
+	<xs:element name="RequestExtractMultiEvidenceLU" type="ct:RequestExtractMultiEvidenceLUType"/>
+	<xs:element name="RequestExtractMultiEvidenceUSI" type="ct:RequestExtractMultiEvidenceUSIType"/>
+	<xs:element name="RequestEventSubscription" type="ct:RequestEventSubscriptionType"/>
+</xs:schema>
