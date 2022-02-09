@@ -25,20 +25,11 @@
 			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="RequestIdType">
-		<xs:restriction base="IdType"/>
-	</xs:simpleType>
-	<xs:simpleType name="SpecificationIdType">
-		<xs:restriction base="IdType"/>
-	</xs:simpleType>
 	<xs:simpleType name="ProcedureIdType">
 		<xs:restriction base="IdType">
 			<xs:minLength value="3"/>
 			<xs:maxLength value="20"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="CanonicalEvidenceIdType">
-		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<!-- End Ids types -->
 
@@ -65,7 +56,7 @@
 		<xs:sequence>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
 			<xs:element name="MimeType" type="xs:normalizedString"/>
-			<xs:element name="DataLanguage" type="DataLanguageType"/>
+			<xs:element name="DataLanguage" type="xs:language"/>
 			<xs:element name="EvidenceData" type="xs:base64Binary"/>
 			<xs:element name="AdditionalInfo" type="ct:TextType" minOccurs="0"/>
 		</xs:sequence>
@@ -75,9 +66,6 @@
 			<xs:enumeration value="OriginalIssuing"/>
 			<xs:enumeration value="MultinlingualFormIssuing"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DataLanguageType">
-		<xs:restriction base="xs:language"/>
 	</xs:simpleType>
 	<!-- Ends Evidences -->
 	<!-- Starts Others -->
@@ -145,20 +133,6 @@
 	<xs:simpleType name="ExplicitRequestType">
 		<xs:restriction base="xs:token">
 			<xs:enumeration value="SDGR14"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="EvidenceTypeCodeType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="10"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="EvidenceStatusType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Agree"/>
-			<xs:enumeration value="Disagree"/>
-			<xs:enumeration value="Error"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- Ends Others -->
@@ -242,7 +216,7 @@
 		<xs:choice>
 			<xs:sequence>
 				<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
-				<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType" maxOccurs="unbounded"/>
+				<xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:choice>
 	</xs:complexType>
@@ -266,9 +240,6 @@
 	</xs:simpleType>
 	<!-- End New IDK -->
 	<!-- Start IDK Type -->
-	<xs:simpleType name="ServiceType">
-		<xs:restriction base="IdType"/>
-	</xs:simpleType>
 	<xs:simpleType name="CanonicalEvidenceidkType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="HigherEducationDiploma"/>
@@ -318,7 +289,7 @@
 		<xs:sequence>
 			<xs:element name="RequestItemId" type="IdType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
 			<xs:element name="AdditionalParameter" maxOccurs="unbounded"
                                     minOccurs="0" type="AdditionalParameterType" />
@@ -328,7 +299,7 @@
 		<xs:complexContent>
 			<xs:extension base="RequestEvidenceItemType">
 				<xs:sequence>
-					<xs:element name="EventNotificationRef" type="UUIDType"/>
+					<xs:element name="EventNotificationRef" type="IdType"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -352,7 +323,7 @@
 	</xs:complexType>
 	<xs:complexType name="RoutingEvidenceInformationItemType">
 		<xs:sequence>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType" maxOccurs="unbounded"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
 			<xs:choice>
 				<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
 				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
@@ -392,7 +363,7 @@
 	<xs:complexType name="EventNotificationItemType">
 		<xs:sequence>
 			<xs:element name="NotificationItemId" type="IdType"/>
-			<xs:element name="EventId" type="xs:token"/>
+			<xs:element name="EventId" type="IdType"/>
 			<xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
 			<xs:element name="EventDate" type="xs:dateTime"/>
@@ -404,8 +375,8 @@
 	<!-- REQUESTS -->
 	<xs:complexType name="RequestExtractMultiEvidenceType" abstract="true">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
+			<xs:element name="SpecificationId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
@@ -464,7 +435,7 @@
 	<!-- RESPONSES -->
 	<xs:complexType name="ResponseBaseType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
@@ -498,8 +469,8 @@
 	</xs:complexType>
 	<xs:complexType name="EventNotificationType">
 		<xs:sequence>
-			<xs:element name="NotificationId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="NotificationId" type="IdType"/>
+			<xs:element name="SpecificationId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
@@ -511,11 +482,11 @@
 	</xs:complexType>
 	<xs:complexType name="RedirectUserType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
+			<xs:element name="SpecificationId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:element name="RedirectUrl" type="RedirectURLType"/>
 			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
 		</xs:sequence>
@@ -542,15 +513,15 @@
    -->
 	<xs:complexType name="RequestExtractEvidenceType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
+			<xs:element name="SpecificationId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:element name="AdditionalParameters" type="AdditionalParametersType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -565,14 +536,14 @@
 	</xs:complexType>
 	<xs:complexType name="ResponseTransferEvidenceType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="SpecificationId" type="SpecificationIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
+			<xs:element name="SpecificationId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
+			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:choice>
 				<xs:sequence>
 					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
@@ -584,7 +555,7 @@
 	</xs:complexType>
 	<xs:complexType name="RequestForwardEvidenceType">
 		<xs:sequence>
-			<xs:element name="RequestId" type="RequestIdType"/>
+			<xs:element name="RequestId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:choice>
 				<xs:sequence>
