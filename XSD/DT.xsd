@@ -6,7 +6,7 @@
            targetNamespace="http://www.de4a.eu/2020/data/transferor/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type/v2" schemaLocation="de4a/common-types.xsd"/>
 
-	<xs:element name="UsiRedirectUser" type="ct:RedirectUserType"/>
+	<xs:element name="USIRedirectUser" type="ct:RedirectUserType"/>
 	<xs:element name="ResponseTransferEvidence" type="ct:ResponseExtractMultiEvidenceType"/>
 	<xs:element name="ResponseEventSubscription" type="ct:ResponseEventSubscriptionType"/>
 	<xs:element name="EventNotification" type="ct:EventNotificationType"/>
