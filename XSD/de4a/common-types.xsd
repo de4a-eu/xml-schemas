@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.de4a.eu/2020/commons/type" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.de4a.eu/2020/commons/type/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:cit="http://www.de4a.eu/2020/commons/identity/type" targetNamespace="http://www.de4a.eu/2020/commons/type/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
-	<xs:import namespace="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" schemaLocation="../provided/CodeList_MIMEMediaTypeCode_IANA_7_04.xsd"/>
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../provided/xml.xsd"/>
 	<xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" schemaLocation="../provided/CV-DataTypes.xsd"/>
 	<xs:import namespace="http://www.de4a.eu/2020/commons/identity/type" schemaLocation="common-identity-types.xsd"/>
@@ -19,8 +18,15 @@
 			<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[8-9a-bA-B][0-9a-fA-F]{3}-[0-9a-fA-F]{12}"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="IdType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="RequestIdType">
-		<xs:restriction base="UUIDType"/>
+		<xs:restriction base="IdType"/>
 	</xs:simpleType>
 	<xs:simpleType name="SpecificationIdType">
 		<xs:restriction base="IdType"/>
@@ -34,25 +40,12 @@
 	<xs:simpleType name="CanonicalEvidenceIdType">
 		<xs:restriction base="IdType"/>
 	</xs:simpleType>
-	<xs:simpleType name="IdType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<!-- End Ids types -->
-	<xs:simpleType name="TimeStampType">
-		<xs:annotation>
-			<xs:documentation>Format: YYYY-MM-DDThh:mm:ss</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:dateTime"/>
-	</xs:simpleType>
 
 	<xs:complexType name="TimePeriodType">
 		<xs:sequence>
-			<xs:element name="StartDate" type="TimeStampType" minOccurs="1"/>
-			<xs:element name="EndDate" type="TimeStampType" minOccurs="0"/>
+			<xs:element name="StartDate" type="xs:dateTime" minOccurs="1"/>
+			<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -71,7 +64,7 @@
 	<xs:complexType name="DomesticEvidenceType">
 		<xs:sequence>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
-			<xs:element name="MimeType" type="clmIANAMIMEMediaType:BinaryObjectMimeCodeContentType"/>
+			<xs:element name="MimeType" type="xs:normalizedString"/>
 			<xs:element name="DataLanguage" type="DataLanguageType"/>
 			<xs:element name="EvidenceData" type="xs:base64Binary"/>
 			<xs:element name="AdditionalInfo" type="ct:TextType" minOccurs="0"/>
@@ -195,14 +188,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- End Error types -->
-	<!-- Start ACK types -->
-	<xs:simpleType name="AckType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="OK"/>
-			<xs:enumeration value="KO"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- End ACK types -->
+
 	<!-- Start Agent Type -->
 	<xs:complexType name="AgentType">
 		<xs:sequence>
@@ -297,136 +283,6 @@
 			<xs:minLength value="1"/>
 			<xs:maxLength value="1024"/>
 			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="DataQualityType">
-		<xs:sequence>
-			<xs:element name="PopulationCoverage" type="PopulationCoverageType" minOccurs="0"/>
-			<xs:element name="AdditionalInfo" type="AdditionalInfoType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="PopulationCoverageType">
-		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="1"/>
-			<xs:maxInclusive value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AdditionalInfoType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="4000"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="InputParameterSetsType">
-		<xs:sequence>
-			<xs:element name="SerialNumber" type="SerialNumberType"/>
-			<xs:element name="Title" type="TitleType"/>
-			<xs:element name="RecordMatchingAssurance" type="RecordMatchingAssuranceType" minOccurs="0"/>
-			<xs:element name="Parameters" type="ParametersType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="SerialNumberType">
-		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="1"/>
-			<xs:maxInclusive value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TitleType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="4000"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="RecordMatchingAssuranceType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="low"/>
-			<xs:enumeration value="medium"/>
-			<xs:enumeration value="high"/>
-			<xs:enumeration value="exact"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="ParametersType">
-		<xs:sequence>
-			<xs:element name="Parameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ParameterType">
-		<xs:sequence>
-			<xs:element name="ItemId" type="ItemIdType"/>
-			<xs:element name="ItemType" type="ItemTypeType" minOccurs="0"/>
-			<xs:element name="DataType" type="DataTypeType" minOccurs="0"/>
-			<xs:element name="Constraints" type="ConstraintsType" minOccurs="0"/>
-			<xs:element name="Texts" type="TextsType" minOccurs="0"/>
-			<!-- Pending its recursive-->
-			<!--xs:element name="Children" type="ParameterType" minOccurs="0"/-->
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="ItemIdType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ItemTypeType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DataTypeType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="attribute"/>
-			<xs:enumeration value="element"/>
-			<xs:enumeration value="complexType"/>
-			<xs:enumeration value="value"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ConstraintsType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="4000"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="TextsType">
-		<xs:sequence>
-			<xs:element name="Text" type="TextType" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TextType">
-		<xs:sequence>
-			<xs:element name="Lang" type="LangType" minOccurs="0"/>
-			<xs:element name="Label" type="LabelType" minOccurs="0"/>
-			<xs:element name="Definition" type="DefinitionType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="LangType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="LabelType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DefinitionType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="IaLevelPathType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="IaTotalNumType">
-		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="100"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="AtuLevelType">
@@ -539,18 +395,18 @@
 			<xs:element name="EventId" type="xs:token"/>
 			<xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-			<xs:element name="EventDate" type="TimeStampType"/>
+			<xs:element name="EventDate" type="xs:dateTime"/>
 			<xs:element name="RelatedEventSubject"
 				type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- END RESPONSE ITEMS -->
 	<!-- REQUESTS -->
-	<xs:complexType name="RequestExtractMultiEvidenceType">
+	<xs:complexType name="RequestExtractMultiEvidenceType" abstract="true">
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
@@ -597,28 +453,26 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
-		<xs:sequence>
-			<xs:choice>
-				<xs:element name="RoutingEvidenceInformationItem"
-                                            type="RoutingEvidenceInformationItemType" />
-				<xs:element name="RoutingEventInformationItem"
-                                            type="RoutingEventInformationItemType" />
-			</xs:choice>
-		</xs:sequence>
+		<xs:choice>
+			<xs:element name="RoutingEvidenceInformationItem"
+										type="RoutingEvidenceInformationItemType" />
+			<xs:element name="RoutingEventInformationItem"
+										type="RoutingEventInformationItemType" />
+		</xs:choice>
 	</xs:complexType>
 	<!-- END REQUESTS -->
 	<!-- RESPONSES -->
 	<xs:complexType name="ResponseBaseType">
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseErrorType">
 		<xs:sequence>
-			<xs:element name="Ack" type="AckType"/>
+			<xs:element name="Ack" type="xs:boolean"/>
 			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -646,7 +500,7 @@
 		<xs:sequence>
 			<xs:element name="NotificationId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 			<xs:sequence>
@@ -659,7 +513,7 @@
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="CanonicalEvidenceIdType"/>
 			<xs:element name="RedirectUrl" type="RedirectURLType"/>
@@ -690,7 +544,7 @@
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
@@ -713,7 +567,7 @@
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
 			<xs:element name="SpecificationId" type="SpecificationIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
@@ -731,7 +585,7 @@
 	<xs:complexType name="RequestForwardEvidenceType">
 		<xs:sequence>
 			<xs:element name="RequestId" type="RequestIdType"/>
-			<xs:element name="TimeStamp" type="TimeStampType"/>
+			<xs:element name="TimeStamp" type="xs:dateTime"/>
 			<xs:choice>
 				<xs:sequence>
 					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>

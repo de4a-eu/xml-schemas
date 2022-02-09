@@ -2,9 +2,9 @@
 <xs:schema
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://www.de4a.eu/2020/data/requestor"
-	xmlns:ct="http://www.de4a.eu/2020/commons/type"
+	xmlns:ct="http://www.de4a.eu/2020/commons/type/v2"
            targetNamespace="http://www.de4a.eu/2020/data/requestor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.de4a.eu/2020/commons/type" schemaLocation="de4a/common-types.xsd"/>
+	<xs:import namespace="http://www.de4a.eu/2020/commons/type/v2" schemaLocation="de4a/common-types.xsd"/>
 
 	<xs:element name="RequestTransferEvidenceIM" type="ct:RequestExtractMultiEvidenceIMType"/>
 	<xs:element name="RequestTransferEvidenceLU" type="ct:RequestExtractMultiEvidenceLUType"/>
