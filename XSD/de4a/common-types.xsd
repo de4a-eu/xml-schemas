@@ -38,12 +38,6 @@
 			<xs:any namespace="##any" processContents="lax"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="DomesticsEvidencesType">
-		<xs:sequence>
-			<xs:element name="DomesticEvidence" type="DomesticEvidenceType" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute ref="xml:lang" use="optional" default="en"/>
-	</xs:complexType>
 	<xs:complexType name="DomesticEvidenceType">
 		<xs:sequence>
 			<xs:element name="IssuingType" type="IssuingTypeType"/>
@@ -52,6 +46,7 @@
 			<xs:element name="EvidenceData" type="xs:base64Binary"/>
 			<xs:element name="AdditionalInfo" type="ct:TextType" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attribute ref="xml:lang" use="optional" default="en"/>
 	</xs:complexType>
 	<xs:simpleType name="IssuingTypeType">
 		<xs:restriction base="xs:token">
@@ -124,11 +119,6 @@
 	</xs:simpleType>
 	<!-- Ends Others -->
 	<!-- Start Error types -->
-	<xs:complexType name="ErrorListType">
-		<xs:sequence>
-			<xs:element name="Error" type="ErrorType" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="ErrorType">
 		<xs:sequence>
 			<xs:element name="Code" type="CodeErrorType"/>
@@ -166,11 +156,6 @@
 	</xs:simpleType>
 	<!-- End Agent Type -->
 	<!-- Start New IDK -->
-	<xs:complexType name="AvailableSourcesType">
-		<xs:sequence>
-			<xs:element name="Source" type="SourceType" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="SourceType">
 		<xs:sequence>
 			<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
@@ -180,13 +165,8 @@
 					<xs:element name="NumProvisions" type="NumProvisionsType"/>
 					<xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
 				</xs:sequence>
-				<xs:element name="ProvisionItems" type="ProvisionItemsType"/>
+				<xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
 			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ProvisionItemsType">
-		<xs:sequence>
-			<xs:element name="ProvisionItem" type="ProvisionItemType" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProvisionItemType">
@@ -334,9 +314,9 @@
 			<xs:choice>
 				<xs:sequence>
 					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-					<xs:element name="DomesticEvidenceList" type="DomesticsEvidencesType" minOccurs="0"/>
+					<xs:element name="DomesticEvidence" type="DomesticEvidenceType" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
-				<xs:element name="ErrorList" type="ErrorListType"/>
+				<xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -430,7 +410,7 @@
 	<xs:complexType name="ResponseErrorType">
 		<xs:sequence>
 			<xs:element name="Ack" type="xs:boolean"/>
-			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+			<xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseExtractMultiEvidenceType">
@@ -474,13 +454,13 @@
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:element name="RedirectUrl" type="RedirectURLType"/>
-			<xs:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+			<xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResponseLookupRoutingInformationType">
 		<xs:choice>
-			<xs:element name="AvailableSources" type="AvailableSourcesType"/>
-			<xs:element name="ErrorList" type="ErrorListType"/>
+			<xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
+			<xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
 		</xs:choice>
 	</xs:complexType>
 	<!-- END RESPONSES -->
