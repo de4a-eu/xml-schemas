@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.de4a.eu/2020/data/response/v2"
+	xmlns:ct="http://www.de4a.eu/2020/commons/type/v2"
+           targetNamespace="http://www.de4a.eu/2020/data/response/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.de4a.eu/2020/commons/type/v2" schemaLocation="de4a/common-types.xsd"/>
+
+	<xs:element name="ResponseMessage" type="ct:ResponseErrorType"/>
+</xs:schema>
+
