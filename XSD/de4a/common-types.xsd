@@ -251,11 +251,8 @@
   <!-- Start IDK Type -->
   <xs:simpleType name="CanonicalEvidenceidkType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="HigherEducationDiploma"/>
-      <xs:enumeration value="DomicileRegistrationEvidence"/>
-      <xs:enumeration value="BirthEvidence"/>
-      <xs:enumeration value="MarriageEvidence"/>
-      <xs:enumeration value="CompanyRegistration"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="RedirectURLType">
