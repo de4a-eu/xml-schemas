@@ -197,57 +197,6 @@
   </xs:simpleType>
   <!-- End Agent Type -->
 
-  <!-- Start New IDK -->
-  <xs:complexType name="SourceType">
-    <xs:sequence>
-      <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-      <xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
-      <xs:choice>
-        <xs:sequence>
-          <xs:element name="NumProvisions" type="NumProvisionsType"/>
-          <xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
-        </xs:sequence>
-        <xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ProvisionItemType">
-    <xs:sequence>
-      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-      <xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
-      <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-      <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
-      <xs:element name="Details" type="ProvisionDetailstype"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ProvisionDetailstype">
-    <xs:choice>
-      <xs:sequence>
-        <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
-        <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:choice>
-  </xs:complexType>
-  <xs:simpleType name="NumProvisionsType">
-    <xs:restriction base="xs:integer">
-      <xs:minInclusive value="1"/>
-      <xs:maxInclusive value="9999"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="OrganisationType">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1"/>
-      <xs:maxLength value="250"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="DataOwnerPrefLabelType">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1"/>
-      <xs:maxLength value="500"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <!-- End New IDK -->
-
   <!-- Start IDK Type -->
   <xs:simpleType name="CanonicalEvidenceidkType">
     <xs:restriction base="xs:string">
@@ -327,24 +276,6 @@
       <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
       <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
       <xs:element name="SubscriptionPeriod" type="TimePeriodType" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="RoutingEvidenceInformationItemType">
-    <xs:sequence>
-      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-      <xs:choice>
-        <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-        <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="RoutingEventInformationItemType">
-    <xs:sequence>
-      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-      <xs:choice>
-        <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-        <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-      </xs:choice>
     </xs:sequence>
   </xs:complexType>
   <!-- END REQUEST ITEMS -->
@@ -428,12 +359,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="RequestLookupRoutingInformationType">
-    <xs:choice>
-      <xs:element name="RoutingEvidenceInformationItem" type="RoutingEvidenceInformationItemType" />
-      <xs:element name="RoutingEventInformationItem" type="RoutingEventInformationItemType" />
-    </xs:choice>
-  </xs:complexType>
   <!-- END REQUESTS -->
 
   <!-- RESPONSES -->
@@ -491,12 +416,6 @@
       <xs:element name="RedirectUrl" type="RedirectURLType"/>
       <xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ResponseLookupRoutingInformationType">
-    <xs:choice>
-      <xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
-      <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
-    </xs:choice>
   </xs:complexType>
   <!-- END RESPONSES -->
 </xs:schema>
