@@ -35,14 +35,14 @@
         Natural Person eIDAS mandatory dataset and optional dataset</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="PersonIdentifier" type="ein:PersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="FirstName" type="ein:CurrentGivenNameType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="FamilyName" type="ein:CurrentFamilyNameType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="DateOfBirth" type="ein:DateOfBirthType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="Gender" type="ein:GenderType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="BirthName" type="ein:BirthNameType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="PlaceOfBirth" type="ein:PlaceOfBirthType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="CurrentAddress" type="ein:CurrentAddressType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PersonIdentifier" type="ein:PersonIdentifierType"/>
+      <xs:element name="FirstName" type="ein:CurrentGivenNameType"/>
+      <xs:element name="FamilyName" type="ein:CurrentFamilyNameType"/>
+      <xs:element name="DateOfBirth" type="ein:DateOfBirthType"/>
+      <xs:element name="Gender" type="ein:GenderType" minOccurs="0"/>
+      <xs:element name="BirthName" type="ein:BirthNameType" minOccurs="0"/>
+      <xs:element name="PlaceOfBirth" type="ein:PlaceOfBirthType" minOccurs="0"/>
+      <xs:element name="CurrentAddress" type="ein:CurrentAddressType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LegalPersonIdentifierType">
@@ -50,23 +50,23 @@
       <xs:documentation>Legal Entity eIDAS mandatory dataset and optional dataset</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="LegalPersonIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="LegalName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="D-2012-17-EUIdentifier" type="eil:D-2012-17-EUIdentifierType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="LEI" type="eil:LEIType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="EORI" type="eil:EORIType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="SEED" type="eil:SEEDType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="SIC" type="eil:SICType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LegalPersonIdentifier" type="eil:LegalPersonIdentifierType"/>
+      <xs:element name="LegalName" type="eil:LegalNameType"/>
+      <xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0"/>
+      <xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0"/>
+      <xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0"/>
+      <xs:element name="D-2012-17-EUIdentifier" type="eil:D-2012-17-EUIdentifierType" minOccurs="0"/>
+      <xs:element name="LEI" type="eil:LEIType" minOccurs="0"/>
+      <xs:element name="EORI" type="eil:EORIType" minOccurs="0"/>
+      <xs:element name="SEED" type="eil:SEEDType" minOccurs="0"/>
+      <xs:element name="SIC" type="eil:SICType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <!-- End Ids types -->
 
   <xs:complexType name="TimePeriodType">
     <xs:sequence>
-      <xs:element name="StartDate" type="xs:dateTime" minOccurs="1"/>
+      <xs:element name="StartDate" type="xs:dateTime" />
       <xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
@@ -132,15 +132,15 @@
   </xs:simpleType>
   <xs:complexType name="DataRequestSubjectCVType">
     <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="1">
-        <xs:element name="DataSubjectPerson" type="NaturalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-        <xs:element name="DataSubjectCompany" type="LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
+      <xs:choice>
+        <xs:element name="DataSubjectPerson" type="NaturalPersonIdentifierType"/>
+        <xs:element name="DataSubjectCompany" type="LegalPersonIdentifierType"/>
       </xs:choice>
-      <xs:element name="DataSubjectRepresentative" type="NaturalPersonIdentifierType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DataSubjectRepresentative" type="NaturalPersonIdentifierType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="RequestGroundsType">
-    <xs:choice minOccurs="1" maxOccurs="1">
+    <xs:choice>
       <xs:element name="LawELIPermanentLink" type="LawELIPermanentLinkType"/>
       <xs:element name="ExplicitRequest" type="ExplicitRequestType"/>
     </xs:choice>
