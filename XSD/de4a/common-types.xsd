@@ -14,6 +14,7 @@
 			<xs:length value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
+  
 	<!-- Start Ids types -->
 	<xs:simpleType name="IdType">
 		<xs:restriction base="xs:string">
@@ -93,6 +94,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- Ends Evidences -->
+  
 	<!-- Starts Others -->
 	<xs:complexType name="AdditionalParameterType">
 		<xs:sequence>
@@ -137,7 +139,7 @@
 			<xs:element name="DataSubjectRepresentative" type="NaturalPersonIdentifierType" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
-        <xs:complexType name="RequestGroundsType">
+  <xs:complexType name="RequestGroundsType">
 		<xs:choice minOccurs="1" maxOccurs="1">
 			<xs:element name="LawELIPermanentLink" type="LawELIPermanentLinkType"/>
 			<xs:element name="ExplicitRequest" type="ExplicitRequestType"/>
@@ -156,6 +158,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- Ends Others -->
+  
 	<!-- Start Error types -->
 	<xs:complexType name="ErrorType">
 		<xs:sequence>
@@ -193,6 +196,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- End Agent Type -->
+  
 	<!-- Start New IDK -->
 	<xs:complexType name="SourceType">
 		<xs:sequence>
@@ -243,6 +247,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- End New IDK -->
+  
 	<!-- Start IDK Type -->
 	<xs:simpleType name="CanonicalEvidenceidkType">
 		<xs:restriction base="xs:string">
@@ -295,8 +300,7 @@
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
 			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="AdditionalParameter" maxOccurs="unbounded"
-                                    minOccurs="0" type="AdditionalParameterType" />
+			<xs:element name="AdditionalParameter" type="AdditionalParameterType" maxOccurs="unbounded" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequestEvidenceLUItemType">
@@ -344,8 +348,9 @@
 		</xs:sequence>
 	</xs:complexType>
 	<!-- END REQUEST ITEMS -->
+  
 	<!-- RESPONSE ITEMS -->
-	<xs:complexType name="ResponseExtractEvidenceItemType">
+	<xs:complexType name="ResponseExtractEvidenceItemType" abstract="true">
 		<xs:sequence>
 			<xs:element name="RequestItemId" type="IdType"/>
 			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
@@ -371,11 +376,11 @@
 			<xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
 			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
 			<xs:element name="EventDate" type="xs:dateTime"/>
-			<xs:element name="RelatedEventSubject"
-				type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="RelatedEventSubject" type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- END RESPONSE ITEMS -->
+  
 	<!-- REQUESTS -->
 	<xs:complexType name="RequestExtractMultiEvidenceType" abstract="true">
 		<xs:sequence>
@@ -391,8 +396,7 @@
 		<xs:complexContent>
 			<xs:extension base="RequestExtractMultiEvidenceType">
 				<xs:sequence>
-					<xs:element name="RequestEvidenceIMItem"
-                                                    type="RequestEvidenceItemType" maxOccurs="unbounded"/>
+					<xs:element name="RequestEvidenceIMItem" type="RequestEvidenceItemType" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -401,8 +405,7 @@
 		<xs:complexContent>
 			<xs:extension base="RequestExtractMultiEvidenceType">
 				<xs:sequence>
-					<xs:element name="RequestEvidenceUSIItem"
-                                                    type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
+					<xs:element name="RequestEvidenceUSIItem" type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -411,8 +414,7 @@
 		<xs:complexContent>
 			<xs:extension base="RequestExtractMultiEvidenceType">
 				<xs:sequence>
-					<xs:element name="RequestEvidenceLUItem"
-                                                    type="RequestEvidenceLUItemType" maxOccurs="unbounded"/>
+					<xs:element name="RequestEvidenceLUItem" type="RequestEvidenceLUItemType" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -421,23 +423,21 @@
 		<xs:complexContent>
 			<xs:extension base="RequestExtractMultiEvidenceType">
 				<xs:sequence>
-					<xs:element name="EventSubscripRequestItem"
-                                                    type="EventSubscripRequestItemType" maxOccurs="unbounded" />
+					<xs:element name="EventSubscripRequestItem" type="EventSubscripRequestItemType" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="RequestLookupRoutingInformationType">
 		<xs:choice>
-			<xs:element name="RoutingEvidenceInformationItem"
-										type="RoutingEvidenceInformationItemType" />
-			<xs:element name="RoutingEventInformationItem"
-										type="RoutingEventInformationItemType" />
+			<xs:element name="RoutingEvidenceInformationItem" type="RoutingEvidenceInformationItemType" />
+			<xs:element name="RoutingEventInformationItem" type="RoutingEventInformationItemType" />
 		</xs:choice>
 	</xs:complexType>
 	<!-- END REQUESTS -->
+  
 	<!-- RESPONSES -->
-	<xs:complexType name="ResponseBaseType">
+	<xs:complexType name="ResponseBaseType" abstract="true">
 		<xs:sequence>
 			<xs:element name="RequestId" type="IdType"/>
 			<xs:element name="TimeStamp" type="xs:dateTime"/>
@@ -455,8 +455,7 @@
 		<xs:complexContent>
 			<xs:extension base="ResponseBaseType">
 				<xs:sequence>
-					<xs:element name="ResponseExtractEvidenceItem"
-                                                    type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
+					<xs:element name="ResponseExtractEvidenceItem" type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -465,8 +464,7 @@
 		<xs:complexContent>
 			<xs:extension base="ResponseBaseType">
 				<xs:sequence>
-					<xs:element name="ResponseEventSubscriptionItem"
-                                                    type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
+					<xs:element name="ResponseEventSubscriptionItem" type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -479,8 +477,7 @@
 			<xs:element name="DataEvaluator" type="AgentType"/>
 			<xs:element name="DataOwner" type="AgentType"/>
 			<xs:sequence>
-				<xs:element name="EventNotificationItem"
-                                                 type="EventNotificationItemType" maxOccurs="unbounded" />
+				<xs:element name="EventNotificationItem" type="EventNotificationItemType" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:sequence>
 	</xs:complexType>
@@ -502,8 +499,4 @@
 		</xs:choice>
 	</xs:complexType>
 	<!-- END RESPONSES -->
-	<!--
-            New types iteration 2
-            ENDS
-        -->
 </xs:schema>
