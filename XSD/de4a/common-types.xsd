@@ -1,509 +1,502 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/type/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace"
-	xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
-	xmlns:ein="http://eidas.europa.eu/attributes/naturalperson" xmlns:eil="http://eidas.europa.eu/attributes/legalperson"
-	targetNamespace="http://www.de4a.eu/2020/commons/type/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
-	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../provided/xml.xsd"/>
-	<xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" schemaLocation="../provided/CV-DataTypes.xsd"/>
-	<xs:import namespace="http://eidas.europa.eu/attributes/naturalperson" schemaLocation="../external/eidas-NP.xsd"/>
-	<xs:import namespace="http://eidas.europa.eu/attributes/legalperson" schemaLocation="../external/eidas-LP.xsd"/>
+  xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+  xmlns:ein="http://eidas.europa.eu/attributes/naturalperson" xmlns:eil="http://eidas.europa.eu/attributes/legalperson"
+  targetNamespace="http://www.de4a.eu/2020/commons/type/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../provided/xml.xsd"/>
+  <xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" schemaLocation="../provided/CV-DataTypes.xsd"/>
+  <xs:import namespace="http://eidas.europa.eu/attributes/naturalperson" schemaLocation="../external/eidas-NP.xsd"/>
+  <xs:import namespace="http://eidas.europa.eu/attributes/legalperson" schemaLocation="../external/eidas-LP.xsd"/>
 
-	<xs:simpleType name="CountryType">
-		<xs:restriction base="xs:string">
-			<xs:length value="2"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- Start Ids types -->
-	<xs:simpleType name="IdType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-			<xs:pattern value="[^\s+][^\s]+[^\s+]"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ProcedureIdType">
-		<xs:restriction base="IdType">
-			<xs:minLength value="3"/>
-			<xs:maxLength value="20"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="NaturalPersonIdentifierType">
-		<xs:annotation>
-			<xs:documentation source="http://mapping.semic.eu/vdm/description.vsp?namespace=cv&amp;type=eb004434a93bbeaa2ba5968d26af06be&amp;id=&amp;format=">
-				Natural Person eIDAS mandatory dataset and optional dataset</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="PersonIdentifier" type="ein:PersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="FirstName" type="ein:CurrentGivenNameType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="FamilyName" type="ein:CurrentFamilyNameType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="DateOfBirth" type="ein:DateOfBirthType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Gender" type="ein:GenderType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="BirthName" type="ein:BirthNameType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="PlaceOfBirth" type="ein:PlaceOfBirthType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="CurrentAddress" type="ein:CurrentAddressType" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="LegalPersonIdentifierType">
-		<xs:annotation>
-			<xs:documentation>Legal Entity eIDAS mandatory dataset and optional dataset</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="LegalPersonIdentifier" type="eil:LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="LegalName" type="eil:LegalNameType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="D-2012-17-EUIdentifier" type="eil:D-2012-17-EUIdentifierType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="LEI" type="eil:LEIType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="EORI" type="eil:EORIType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="SEED" type="eil:SEEDType" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="SIC" type="eil:SICType" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- End Ids types -->
+  <xs:simpleType name="CountryType">
+    <xs:restriction base="xs:string">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
 
-	<xs:complexType name="TimePeriodType">
-		<xs:sequence>
-			<xs:element name="StartDate" type="xs:dateTime" minOccurs="1"/>
-			<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
+  <!-- Start Ids types -->
+  <xs:simpleType name="IdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+      <xs:pattern value="[^\s+][^\s]+[^\s+]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProcedureIdType">
+    <xs:restriction base="IdType">
+      <xs:minLength value="3"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NaturalPersonIdentifierType">
+    <xs:annotation>
+      <xs:documentation source="http://mapping.semic.eu/vdm/description.vsp?namespace=cv&amp;type=eb004434a93bbeaa2ba5968d26af06be&amp;id=&amp;format=">
+        Natural Person eIDAS mandatory dataset and optional dataset</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PersonIdentifier" type="ein:PersonIdentifierType"/>
+      <xs:element name="FirstName" type="ein:CurrentGivenNameType"/>
+      <xs:element name="FamilyName" type="ein:CurrentFamilyNameType"/>
+      <xs:element name="DateOfBirth" type="ein:DateOfBirthType"/>
+      <xs:element name="Gender" type="ein:GenderType" minOccurs="0"/>
+      <xs:element name="BirthName" type="ein:BirthNameType" minOccurs="0"/>
+      <xs:element name="PlaceOfBirth" type="ein:PlaceOfBirthType" minOccurs="0"/>
+      <xs:element name="CurrentAddress" type="ein:CurrentAddressType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LegalPersonIdentifierType">
+    <xs:annotation>
+      <xs:documentation>Legal Entity eIDAS mandatory dataset and optional dataset</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegalPersonIdentifier" type="eil:LegalPersonIdentifierType"/>
+      <xs:element name="LegalName" type="eil:LegalNameType"/>
+      <xs:element name="LegalAddress" type="eil:LegalPersonAddressType" minOccurs="0"/>
+      <xs:element name="VATRegistration" type="eil:VATRegistrationNumberType" minOccurs="0"/>
+      <xs:element name="TaxReference" type="eil:TaxReferenceType" minOccurs="0"/>
+      <xs:element name="D-2012-17-EUIdentifier" type="eil:D-2012-17-EUIdentifierType" minOccurs="0"/>
+      <xs:element name="LEI" type="eil:LEIType" minOccurs="0"/>
+      <xs:element name="EORI" type="eil:EORIType" minOccurs="0"/>
+      <xs:element name="SEED" type="eil:SEEDType" minOccurs="0"/>
+      <xs:element name="SIC" type="eil:SICType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- End Ids types -->
 
-	<!-- Starts Evidences -->
-	<xs:complexType name="CanonicalEvidenceType">
-		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="DomesticEvidenceType">
-		<xs:sequence>
-			<xs:element name="IssuingType" type="IssuingTypeType"/>
-			<xs:element name="MimeType" type="xs:normalizedString"/>
-			<xs:element name="DataLanguage" type="xs:language"/>
-			<xs:element name="EvidenceData" type="xs:base64Binary"/>
-			<xs:element name="AdditionalInfo" type="ct:TextType" minOccurs="0"/>
-		</xs:sequence>
-		<xs:attribute ref="xml:lang" use="optional" default="en"/>
-	</xs:complexType>
-	<xs:simpleType name="IssuingTypeType">
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="OriginalIssuing"/>
-			<xs:enumeration value="MultinlingualFormIssuing"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- Ends Evidences -->
-	<!-- Starts Others -->
-	<xs:complexType name="AdditionalParameterType">
-		<xs:sequence>
-			<xs:element name="Label" type="AdditionalParameterLabelType"/>
-			<xs:element name="Type" type="AdditionalParameterTypeType"/>
-			<xs:element name="Value" type="AdditionalParameterValueType"/>
-		</xs:sequence>
-		<xs:attribute ref="xml:lang" use="optional" default="en"/>
-	</xs:complexType>
-	<xs:simpleType name="AdditionalParameterLabelType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="100"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AdditionalParameterTypeType">
-		<xs:annotation>
-			<xs:documentation>It's possible add more enumerations elements</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Date"/>
-			<xs:enumeration value="InputText"/>
-			<xs:enumeration value="YesNo"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AdditionalParameterValueType">
-		<xs:annotation>
-			<xs:documentation>Parameter value </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="DataRequestSubjectCVType">
-		<xs:sequence>
-			<xs:choice minOccurs="1" maxOccurs="1">
-				<xs:element name="DataSubjectPerson" type="NaturalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-				<xs:element name="DataSubjectCompany" type="LegalPersonIdentifierType" minOccurs="1" maxOccurs="1"/>
-			</xs:choice>
-			<xs:element name="DataSubjectRepresentative" type="NaturalPersonIdentifierType" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
-        <xs:complexType name="RequestGroundsType">
-		<xs:choice minOccurs="1" maxOccurs="1">
-			<xs:element name="LawELIPermanentLink" type="LawELIPermanentLinkType"/>
-			<xs:element name="ExplicitRequest" type="ExplicitRequestType"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:simpleType name="LawELIPermanentLinkType">
-		<xs:restriction base="xs:anyURI">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="1024"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ExplicitRequestType">
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="SDGR14"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- Ends Others -->
-	<!-- Start Error types -->
-	<xs:complexType name="ErrorType">
-		<xs:sequence>
-			<xs:element name="Code" type="CodeErrorType"/>
-			<xs:element name="Text" type="TextErrorType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="CodeErrorType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="10"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TextErrorType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="4000"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- End Error types -->
+  <xs:complexType name="TimePeriodType">
+    <xs:sequence>
+      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
 
-	<!-- Start Agent Type -->
-	<xs:complexType name="AgentType">
-		<xs:sequence>
-			<xs:element name="AgentUrn" type="AgentUrnType"/>
-			<xs:element name="AgentName" type="cv:NameType"/>
-			<xs:element name="RedirectURL" type="RedirectURLType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="AgentUrnType">
-		<xs:restriction base="xs:anyURI">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- End Agent Type -->
-	<!-- Start New IDK -->
-	<xs:complexType name="SourceType">
-		<xs:sequence>
-			<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-			<xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element name="NumProvisions" type="NumProvisionsType"/>
-					<xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
-				</xs:sequence>
-				<xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ProvisionItemType">
-		<xs:sequence>
-			<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-			<xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
-			<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-			<xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
-			<xs:element name="Details" type="ProvisionDetailstype"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ProvisionDetailstype">
-		<xs:choice>
-			<xs:sequence>
-				<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
-				<xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:choice>
-	</xs:complexType>
-	<xs:simpleType name="NumProvisionsType">
-		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="1"/>
-			<xs:maxInclusive value="9999"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="OrganisationType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DataOwnerPrefLabelType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="500"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- End New IDK -->
-	<!-- Start IDK Type -->
-	<xs:simpleType name="CanonicalEvidenceidkType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="HigherEducationDiploma"/>
-			<xs:enumeration value="DomicileRegistrationEvidence"/>
-			<xs:enumeration value="BirthEvidence"/>
-			<xs:enumeration value="MarriageEvidence"/>
-			<xs:enumeration value="CompanyRegistration"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="RedirectURLType">
-		<xs:restriction base="xs:anyURI">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="1024"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AtuLevelType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="nuts0"/>
-			<xs:enumeration value="nuts1"/>
-			<xs:enumeration value="nuts2"/>
-			<xs:enumeration value="nuts3"/>
-			<xs:enumeration value="lau"/>
-			<xs:enumeration value="edu"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AtuCodeType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="AtuLatinNameType">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="250"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- End IDK Type  -->
+  <!-- Starts Evidences -->
+  <xs:complexType name="CanonicalEvidenceType">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DomesticEvidenceType">
+    <xs:sequence>
+      <xs:element name="IssuingType" type="IssuingTypeType"/>
+      <xs:element name="MimeType" type="xs:normalizedString"/>
+      <xs:element name="DataLanguage" type="xs:language"/>
+      <xs:element name="EvidenceData" type="xs:base64Binary"/>
+      <xs:element name="AdditionalInfo" type="ct:TextType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute ref="xml:lang" use="optional" default="en"/>
+  </xs:complexType>
+  <xs:simpleType name="IssuingTypeType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="OriginalIssuing"/>
+      <xs:enumeration value="MultilingualFormIssuing"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Ends Evidences -->
 
-	<!--
+  <!-- Starts Others -->
+  <xs:complexType name="AdditionalParameterType">
+    <xs:sequence>
+      <xs:element name="Label" type="AdditionalParameterLabelType"/>
+      <xs:element name="Type" type="AdditionalParameterTypeType"/>
+      <xs:element name="Value" type="AdditionalParameterValueType"/>
+    </xs:sequence>
+    <xs:attribute ref="xml:lang" use="optional" default="en"/>
+  </xs:complexType>
+  <xs:simpleType name="AdditionalParameterLabelType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AdditionalParameterTypeType">
+    <xs:annotation>
+      <xs:documentation>It's possible add more enumerations elements</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Date"/>
+      <xs:enumeration value="InputText"/>
+      <xs:enumeration value="YesNo"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AdditionalParameterValueType">
+    <xs:annotation>
+      <xs:documentation>Parameter value </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataRequestSubjectCVType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="DataSubjectPerson" type="NaturalPersonIdentifierType"/>
+        <xs:element name="DataSubjectCompany" type="LegalPersonIdentifierType"/>
+      </xs:choice>
+      <xs:element name="DataSubjectRepresentative" type="NaturalPersonIdentifierType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestGroundsType">
+    <xs:choice>
+      <xs:element name="LawELIPermanentLink" type="LawELIPermanentLinkType"/>
+      <xs:element name="ExplicitRequest" type="ExplicitRequestType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="LawELIPermanentLinkType">
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1024"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExplicitRequestType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="SDGR14"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Ends Others -->
+
+  <!-- Start Error types -->
+  <xs:complexType name="ErrorType">
+    <xs:sequence>
+      <xs:element name="Code" type="CodeErrorType"/>
+      <xs:element name="Text" type="TextErrorType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CodeErrorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="10"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextErrorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- End Error types -->
+
+  <!-- Start Agent Type -->
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="AgentUrn" type="AgentUrnType"/>
+      <xs:element name="AgentName" type="cv:NameType"/>
+      <xs:element name="RedirectURL" type="RedirectURLType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AgentUrnType">
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- End Agent Type -->
+
+  <!-- Start New IDK -->
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
+      <xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="NumProvisions" type="NumProvisionsType"/>
+          <xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProvisionItemType">
+    <xs:sequence>
+      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+      <xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
+      <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+      <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
+      <xs:element name="Details" type="ProvisionDetailstype"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProvisionDetailstype">
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
+        <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="NumProvisionsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="9999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrganisationType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataOwnerPrefLabelType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- End New IDK -->
+
+  <!-- Start IDK Type -->
+  <xs:simpleType name="CanonicalEvidenceidkType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HigherEducationDiploma"/>
+      <xs:enumeration value="DomicileRegistrationEvidence"/>
+      <xs:enumeration value="BirthEvidence"/>
+      <xs:enumeration value="MarriageEvidence"/>
+      <xs:enumeration value="CompanyRegistration"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RedirectURLType">
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1024"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AtuLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="nuts0"/>
+      <xs:enumeration value="nuts1"/>
+      <xs:enumeration value="nuts2"/>
+      <xs:enumeration value="nuts3"/>
+      <xs:enumeration value="lau"/>
+      <xs:enumeration value="edu"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AtuCodeType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AtuLatinNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- End IDK Type  -->
+
+  <!--
             New types iteration 2
             START
         -->
-	<!-- REQUEST ITEMS -->
-	<xs:complexType name="RequestEvidenceItemType">
-		<xs:sequence>
-			<xs:element name="RequestItemId" type="IdType"/>
-			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
-			<xs:element name="RequestGrounds" type="RequestGroundsType"/>
-			<xs:element name="AdditionalParameter" maxOccurs="unbounded"
-                                    minOccurs="0" type="AdditionalParameterType" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RequestEvidenceLUItemType">
-		<xs:complexContent>
-			<xs:extension base="RequestEvidenceItemType">
-				<xs:sequence>
-					<xs:element name="EventNotificationRef" type="IdType"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RequestEvidenceUSIItemType">
-		<xs:complexContent>
-			<xs:extension base="RequestEvidenceItemType">
-				<xs:sequence>
-					<xs:element name="DataEvaluatorURL" type="xs:anyURI"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="EventSubscripRequestItemType">
-		<xs:sequence>
-			<xs:element name="RequestItemId" type="IdType"/>
-			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-			<xs:element name="SubscriptionPeriod" type="TimePeriodType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RoutingEvidenceInformationItemType">
-		<xs:sequence>
-			<xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RoutingEventInformationItemType">
-		<xs:sequence>
-			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-			<xs:choice>
-				<xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-				<xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- END REQUEST ITEMS -->
-	<!-- RESPONSE ITEMS -->
-	<xs:complexType name="ResponseExtractEvidenceItemType">
-		<xs:sequence>
-			<xs:element name="RequestItemId" type="IdType"/>
-			<xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
-					<xs:element name="DomesticEvidence" type="DomesticEvidenceType" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseEventSubscriptionItemType">
-		<xs:sequence>
-			<xs:element name="RequestItemId" type="IdType"/>
-			<xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="EventNotificationItemType">
-		<xs:sequence>
-			<xs:element name="NotificationItemId" type="IdType"/>
-			<xs:element name="EventId" type="IdType"/>
-			<xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
-			<xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-			<xs:element name="EventDate" type="xs:dateTime"/>
-			<xs:element name="RelatedEventSubject"
-				type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- END RESPONSE ITEMS -->
-	<!-- REQUESTS -->
-	<xs:complexType name="RequestExtractMultiEvidenceType" abstract="true">
-		<xs:sequence>
-			<xs:element name="RequestId" type="IdType"/>
-			<xs:element name="SpecificationId" type="IdType"/>
-			<xs:element name="TimeStamp" type="xs:dateTime"/>
-			<xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RequestExtractMultiEvidenceIMType">
-		<xs:complexContent>
-			<xs:extension base="RequestExtractMultiEvidenceType">
-				<xs:sequence>
-					<xs:element name="RequestEvidenceIMItem"
-                                                    type="RequestEvidenceItemType" maxOccurs="unbounded"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RequestExtractMultiEvidenceUSIType">
-		<xs:complexContent>
-			<xs:extension base="RequestExtractMultiEvidenceType">
-				<xs:sequence>
-					<xs:element name="RequestEvidenceUSIItem"
-                                                    type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RequestExtractMultiEvidenceLUType">
-		<xs:complexContent>
-			<xs:extension base="RequestExtractMultiEvidenceType">
-				<xs:sequence>
-					<xs:element name="RequestEvidenceLUItem"
-                                                    type="RequestEvidenceLUItemType" maxOccurs="unbounded"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RequestEventSubscriptionType">
-		<xs:complexContent>
-			<xs:extension base="RequestExtractMultiEvidenceType">
-				<xs:sequence>
-					<xs:element name="EventSubscripRequestItem"
-                                                    type="EventSubscripRequestItemType" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RequestLookupRoutingInformationType">
-		<xs:choice>
-			<xs:element name="RoutingEvidenceInformationItem"
-										type="RoutingEvidenceInformationItemType" />
-			<xs:element name="RoutingEventInformationItem"
-										type="RoutingEventInformationItemType" />
-		</xs:choice>
-	</xs:complexType>
-	<!-- END REQUESTS -->
-	<!-- RESPONSES -->
-	<xs:complexType name="ResponseBaseType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="IdType"/>
-			<xs:element name="TimeStamp" type="xs:dateTime"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseErrorType">
-		<xs:sequence>
-			<xs:element name="Ack" type="xs:boolean"/>
-			<xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseExtractMultiEvidenceType">
-		<xs:complexContent>
-			<xs:extension base="ResponseBaseType">
-				<xs:sequence>
-					<xs:element name="ResponseExtractEvidenceItem"
-                                                    type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ResponseEventSubscriptionType">
-		<xs:complexContent>
-			<xs:extension base="ResponseBaseType">
-				<xs:sequence>
-					<xs:element name="ResponseEventSubscriptionItem"
-                                                    type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="EventNotificationType">
-		<xs:sequence>
-			<xs:element name="NotificationId" type="IdType"/>
-			<xs:element name="SpecificationId" type="IdType"/>
-			<xs:element name="TimeStamp" type="xs:dateTime"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="DataOwner" type="AgentType"/>
-			<xs:sequence>
-				<xs:element name="EventNotificationItem"
-                                                 type="EventNotificationItemType" maxOccurs="unbounded" />
-			</xs:sequence>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="RedirectUserType">
-		<xs:sequence>
-			<xs:element name="RequestId" type="IdType"/>
-			<xs:element name="SpecificationId" type="IdType"/>
-			<xs:element name="TimeStamp" type="xs:dateTime"/>
-			<xs:element name="DataEvaluator" type="AgentType"/>
-			<xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
-			<xs:element name="RedirectUrl" type="RedirectURLType"/>
-			<xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ResponseLookupRoutingInformationType">
-		<xs:choice>
-			<xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
-			<xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
-		</xs:choice>
-	</xs:complexType>
-	<!-- END RESPONSES -->
-	<!--
-            New types iteration 2
-            ENDS
-        -->
+  <!-- REQUEST ITEMS -->
+  <xs:complexType name="RequestEvidenceItemType">
+    <xs:sequence>
+      <xs:element name="RequestItemId" type="IdType"/>
+      <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+      <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
+      <xs:element name="RequestGrounds" type="RequestGroundsType"/>
+      <xs:element name="AdditionalParameter" type="AdditionalParameterType" maxOccurs="unbounded" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestEvidenceLUItemType">
+    <xs:complexContent>
+      <xs:extension base="RequestEvidenceItemType">
+        <xs:sequence>
+          <xs:element name="EventNotificationRef" type="IdType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestEvidenceUSIItemType">
+    <xs:complexContent>
+      <xs:extension base="RequestEvidenceItemType">
+        <xs:sequence>
+          <xs:element name="DataEvaluatorURL" type="xs:anyURI"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EventSubscripRequestItemType">
+    <xs:sequence>
+      <xs:element name="RequestItemId" type="IdType"/>
+      <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+      <xs:element name="SubscriptionPeriod" type="TimePeriodType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoutingEvidenceInformationItemType">
+    <xs:sequence>
+      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
+      <xs:choice>
+        <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+        <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoutingEventInformationItemType">
+    <xs:sequence>
+      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+      <xs:choice>
+        <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
+        <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- END REQUEST ITEMS -->
+
+  <!-- RESPONSE ITEMS -->
+  <xs:complexType name="ResponseExtractEvidenceItemType">
+    <xs:sequence>
+      <xs:element name="RequestItemId" type="IdType"/>
+      <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
+          <xs:element name="DomesticEvidence" type="DomesticEvidenceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseEventSubscriptionItemType">
+    <xs:sequence>
+      <xs:element name="RequestItemId" type="IdType"/>
+      <xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventNotificationItemType">
+    <xs:sequence>
+      <xs:element name="NotificationItemId" type="IdType"/>
+      <xs:element name="EventId" type="IdType"/>
+      <xs:element name="EventSubject" type="DataRequestSubjectCVType"/>
+      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+      <xs:element name="EventDate" type="xs:dateTime"/>
+      <xs:element name="RelatedEventSubject" type="DataRequestSubjectCVType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- END RESPONSE ITEMS -->
+
+  <!-- REQUESTS -->
+  <xs:complexType name="RequestExtractMultiEvidenceType" abstract="true">
+    <xs:sequence>
+      <xs:element name="RequestId" type="IdType"/>
+      <xs:element name="SpecificationId" type="IdType"/>
+      <xs:element name="TimeStamp" type="xs:dateTime"/>
+      <xs:element name="ProcedureId" type="ProcedureIdType" minOccurs="0"/>
+      <xs:element name="DataEvaluator" type="AgentType"/>
+      <xs:element name="DataOwner" type="AgentType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestExtractMultiEvidenceIMType">
+    <xs:complexContent>
+      <xs:extension base="RequestExtractMultiEvidenceType">
+        <xs:sequence>
+          <xs:element name="RequestEvidenceIMItem" type="RequestEvidenceItemType" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestExtractMultiEvidenceUSIType">
+    <xs:complexContent>
+      <xs:extension base="RequestExtractMultiEvidenceType">
+        <xs:sequence>
+          <xs:element name="RequestEvidenceUSIItem" type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestExtractMultiEvidenceLUType">
+    <xs:complexContent>
+      <xs:extension base="RequestExtractMultiEvidenceType">
+        <xs:sequence>
+          <xs:element name="RequestEvidenceLUItem" type="RequestEvidenceLUItemType" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestEventSubscriptionType">
+    <xs:complexContent>
+      <xs:extension base="RequestExtractMultiEvidenceType">
+        <xs:sequence>
+          <xs:element name="EventSubscripRequestItem" type="EventSubscripRequestItemType" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestLookupRoutingInformationType">
+    <xs:choice>
+      <xs:element name="RoutingEvidenceInformationItem" type="RoutingEvidenceInformationItemType" />
+      <xs:element name="RoutingEventInformationItem" type="RoutingEventInformationItemType" />
+    </xs:choice>
+  </xs:complexType>
+  <!-- END REQUESTS -->
+
+  <!-- RESPONSES -->
+  <xs:complexType name="ResponseBaseType" abstract="true">
+    <xs:sequence>
+      <xs:element name="RequestId" type="IdType"/>
+      <xs:element name="TimeStamp" type="xs:dateTime"/>
+      <xs:element name="DataEvaluator" type="AgentType"/>
+      <xs:element name="DataOwner" type="AgentType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseErrorType">
+    <xs:sequence>
+      <xs:element name="Ack" type="xs:boolean"/>
+      <xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseExtractMultiEvidenceType">
+    <xs:complexContent>
+      <xs:extension base="ResponseBaseType">
+        <xs:sequence>
+          <xs:element name="ResponseExtractEvidenceItem" type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResponseEventSubscriptionType">
+    <xs:complexContent>
+      <xs:extension base="ResponseBaseType">
+        <xs:sequence>
+          <xs:element name="ResponseEventSubscriptionItem" type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EventNotificationType">
+    <xs:sequence>
+      <xs:element name="NotificationId" type="IdType"/>
+      <xs:element name="SpecificationId" type="IdType"/>
+      <xs:element name="TimeStamp" type="xs:dateTime"/>
+      <xs:element name="DataEvaluator" type="AgentType"/>
+      <xs:element name="DataOwner" type="AgentType"/>
+      <xs:sequence>
+        <xs:element name="EventNotificationItem" type="EventNotificationItemType" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RedirectUserType">
+    <xs:sequence>
+      <xs:element name="RequestId" type="IdType"/>
+      <xs:element name="SpecificationId" type="IdType"/>
+      <xs:element name="TimeStamp" type="xs:dateTime"/>
+      <xs:element name="DataEvaluator" type="AgentType"/>
+      <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
+      <xs:element name="RedirectUrl" type="RedirectURLType"/>
+      <xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseLookupRoutingInformationType">
+    <xs:choice>
+      <xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
+      <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- END RESPONSES -->
 </xs:schema>
