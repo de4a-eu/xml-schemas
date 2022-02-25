@@ -350,7 +350,7 @@
   <!-- END REQUEST ITEMS -->
 
   <!-- RESPONSE ITEMS -->
-  <xs:complexType name="ResponseExtractEvidenceItemType" abstract="true">
+  <xs:complexType name="ResponseExtractEvidenceItemType">
     <xs:sequence>
       <xs:element name="RequestItemId" type="IdType"/>
       <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
