@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	         xmlns="http://www.de4a.eu/2020/ial/v2"
+	         xmlns:ct="http://www.de4a.eu/2020/commons/type/v2"
+           targetNamespace="http://www.de4a.eu/2020/ial/v2" 
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <!-- Simple types -->
+  
+  <!-- Simple types that need to be in sync with common-types -->
+
+  <xs:simpleType name="CountryType">
+    <xs:restriction base="xs:string">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="AgentUrnType">
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="IdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+      <xs:pattern value="[^\s+][^\s]+[^\s+]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Simple types specific to IAL -->
+  
+  <xs:simpleType name="AtuCodeType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AtuLatinNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="AtuLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="nuts0"/>
+      <xs:enumeration value="nuts1"/>
+      <xs:enumeration value="nuts2"/>
+      <xs:enumeration value="nuts3"/>
+      <xs:enumeration value="lau"/>
+      <xs:enumeration value="edu"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CanonicalEvidenceidkType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="NumProvisionsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="9999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="OrganisationType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DataOwnerPrefLabelType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Complex types -->
+
+  <xs:complexType name="RoutingEvidenceInformationItemType">
+    <xs:sequence>
+      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0">
+        <xs:element name="AtuCode" type="AtuCodeType"/>
+        <xs:element name="DataOwnerId" type="AgentUrnType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- TODO sync with RoutingEvidenceInformationItemType -->
+  <xs:complexType name="RoutingEventInformationItemType">
+    <xs:sequence>
+      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+      <xs:choice minOccurs="0">
+        <xs:element name="CountryCode" type="CountryType"/>
+        <xs:element name="DataOwnerId" type="AgentUrnType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestLookupRoutingInformationType">
+    <!-- TODO remove choice -->
+    <xs:choice>
+      <xs:element name="RoutingEvidenceInformationItem" type="RoutingEvidenceInformationItemType" />
+      <xs:element name="RoutingEventInformationItem" type="RoutingEventInformationItemType" />
+    </xs:choice>
+  </xs:complexType>
+
+	<xs:element name="RequestLookupRoutingInformation" type="RequestLookupRoutingInformationType"/>
+
+  <xs:complexType name="ProvisionDetailstype">
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
+        <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="ProvisionItemType">
+    <xs:sequence>
+      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+      <xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
+      <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
+      <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
+      <xs:element name="Details" type="ProvisionDetailstype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
+      <xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
+      <xs:choice>
+        <!-- I don't understand the need of this choice -->
+        <xs:sequence>
+          <xs:element name="NumProvisions" type="NumProvisionsType"/>
+          <xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="CodeErrorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="10"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TextErrorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="ErrorType">
+    <xs:sequence>
+      <xs:element name="Code" type="CodeErrorType"/>
+      <xs:element name="Text" type="TextErrorType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResponseLookupRoutingInformationType">
+    <xs:choice>
+      <xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
+      <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+
+	<xs:element name="ResponseLookupRoutingInformation" type="ResponseLookupRoutingInformationType"/>
+</xs:schema>
