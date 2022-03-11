@@ -269,6 +269,7 @@
     <xs:sequence>
       <xs:element name="RequestItemId" type="IdType"/>
       <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
+	  <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
       <xs:choice>
         <xs:sequence>
           <xs:element name="CanonicalEvidence" type="CanonicalEvidenceType"/>
@@ -282,6 +283,7 @@
   <xs:complexType name="ResponseEventSubscriptionItemType">
     <xs:sequence>
       <xs:element name="RequestItemId" type="IdType"/>
+	  <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
       <xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
     </xs:sequence>
   </xs:complexType>
@@ -405,7 +407,8 @@
       <xs:element name="SpecificationId" type="IdType"/>
       <xs:element name="TimeStamp" type="xs:dateTime"/>
       <xs:element name="DataEvaluator" type="AgentType"/>
-      <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
+	  <xs:element name="DataOwner" type="AgentType"/>
+	  <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
       <xs:element name="RedirectUrl" type="RedirectURLType"/>
       <xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
