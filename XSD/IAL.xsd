@@ -16,13 +16,6 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:simpleType name="AgentUrnType">
-    <xs:restriction base="xs:anyURI">
-      <xs:minLength value="1"/>
-      <xs:maxLength value="100"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
   <xs:simpleType name="IdType">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
@@ -58,27 +51,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="CanonicalEvidenceidkType">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1"/>
-      <xs:maxLength value="500"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="NumProvisionsType">
-    <xs:restriction base="xs:integer">
-      <xs:minInclusive value="1"/>
-      <xs:maxInclusive value="9999"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:simpleType name="OrganisationType">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1"/>
-      <xs:maxLength value="250"/>
-    </xs:restriction>
-  </xs:simpleType>
-
   <xs:simpleType name="DataOwnerPrefLabelType">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
@@ -86,73 +58,45 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <!-- Complex types -->
-
-  <xs:complexType name="RoutingEvidenceInformationItemType">
-    <xs:sequence>
-      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-      <xs:choice minOccurs="0">
-        <xs:element name="AtuCode" type="AtuCodeType"/>
-        <xs:element name="DataOwnerId" type="AgentUrnType"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-  
-  <!-- TODO sync with RoutingEvidenceInformationItemType -->
-  <xs:complexType name="RoutingEventInformationItemType">
-    <xs:sequence>
-      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-      <xs:choice minOccurs="0">
-        <xs:element name="CountryCode" type="CountryType"/>
-        <xs:element name="DataOwnerId" type="AgentUrnType"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
+  <!-- Request IAL stuff -->
 
   <xs:complexType name="RequestLookupRoutingInformationType">
-    <!-- TODO remove choice -->
-    <xs:choice>
-      <xs:element name="RoutingEvidenceInformationItem" type="RoutingEvidenceInformationItemType" />
-      <xs:element name="RoutingEventInformationItem" type="RoutingEventInformationItemType" />
-    </xs:choice>
+    <xs:sequence>
+      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
+      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
 	<xs:element name="RequestLookupRoutingInformation" type="RequestLookupRoutingInformationType"/>
-
-  <xs:complexType name="ProvisionDetailstype">
-    <xs:choice>
-      <xs:sequence>
-        <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI" maxOccurs="unbounded"/>
-        <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:choice>
+  
+  <!-- Response IAL stuff -->
+  
+  <xs:complexType name="ParameterType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Optional" type="xs:boolean" />
+    </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="ProvisionItemType">
+  <xs:complexType name="ParameterSetType">
     <xs:sequence>
-      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-      <xs:element name="AtuLatinName" type="AtuLatinNameType" minOccurs="0"/>
-      <xs:element name="DataOwnerId" type="AgentUrnType" minOccurs="0"/>
-      <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" minOccurs="0"/>
-      <xs:element name="Details" type="ProvisionDetailstype"/>
-    </xs:sequence>
+      <xs:element name="Title" type="xs:string" />
+      <xs:element name="Parameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>  
   </xs:complexType>
 
   <xs:complexType name="SourceType">
     <xs:sequence>
-      <xs:element name="CountryCode" type="CountryType" minOccurs="0"/>
-      <xs:element name="AtuLevel" type="AtuLevelType" minOccurs="0"/>
-      <xs:choice>
-        <!-- I don't understand the need of this choice -->
-        <xs:sequence>
-          <xs:element name="NumProvisions" type="NumProvisionsType"/>
-          <xs:element name="Organisation" type="OrganisationType" minOccurs="0"/>
-        </xs:sequence>
-        <xs:element name="ProvisionItem" type="ProvisionItemType" maxOccurs="unbounded"/>
-      </xs:choice>
+      <xs:element name="AtuLevel" type="AtuLevelType" />
+      <xs:element name="AtuCode" type="AtuCodeType" />
+      <xs:element name="AtuLatinName" type="AtuLatinNameType" />
+      <xs:element name="DataOwnerId" type="IdType" />
+      <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" />
+      <xs:element name="ParameterSet" type="ParameterSetType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
+  <!-- Response IAL error -->
   <xs:simpleType name="CodeErrorType">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
@@ -174,6 +118,8 @@
       <xs:element name="Text" type="TextErrorType"/>
     </xs:sequence>
   </xs:complexType>
+
+  <!-- Response IAL generic -->
 
   <xs:complexType name="ResponseLookupRoutingInformationType">
     <xs:choice>
