@@ -3,9 +3,9 @@
   xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
   xmlns:ein="http://eidas.europa.eu/attributes/naturalperson" xmlns:eil="http://eidas.europa.eu/attributes/legalperson"
   targetNamespace="http://www.de4a.eu/2020/commons/type/v2" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../provided/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../provided/xml.xsd"/>
-  <xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" schemaLocation="../provided/CV-DataTypes.xsd"/>
+  <xs:import namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" schemaLocation="../external/BDNDR-CCTS_CCT_SchemaModule-1.1.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../external/xml.xsd"/>
+  <xs:import namespace="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" schemaLocation="../external/CV-DataTypes.xsd"/>
   <xs:import namespace="http://eidas.europa.eu/attributes/naturalperson" schemaLocation="../external/eidas-NP.xsd"/>
   <xs:import namespace="http://eidas.europa.eu/attributes/legalperson" schemaLocation="../external/eidas-LP.xsd"/>
 
