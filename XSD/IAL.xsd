@@ -11,7 +11,7 @@
   <!-- Simple types that need to be in sync with common-types -->
 
   <xs:simpleType name="CountryType">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="xs:token">
       <xs:length value="2"/>
     </xs:restriction>
   </xs:simpleType>
@@ -62,8 +62,8 @@
 
   <xs:complexType name="RequestLookupRoutingInformationType">
     <xs:sequence>
-      <xs:element name="CanonicalEvidenceTypeId" type="IdType" maxOccurs="unbounded"/>
       <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
+      <xs:element name="CanonicalObjectTypeId" type="IdType" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -85,7 +85,7 @@
     </xs:sequence>  
   </xs:complexType>
 
-  <xs:complexType name="SourceType">
+  <xs:complexType name="ProvisionType">
     <xs:sequence>
       <xs:element name="AtuLevel" type="AtuLevelType" />
       <xs:element name="AtuCode" type="AtuCodeType" />
@@ -94,6 +94,20 @@
       <xs:element name="DataOwnerPrefLabel" type="DataOwnerPrefLabelType" />
       <xs:element name="ParameterSet" type="ParameterSetType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ResponsePerCountryType">
+    <xs:sequence>
+      <xs:element name="Provision" type="ProvisionType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="CountryCode" type="CountryType" use="required"/>
+  </xs:complexType>
+  
+  <xs:complexType name="ResponseItemType">
+    <xs:sequence>
+      <xs:element name="ResponsePerCountry" type="ResponsePerCountryType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="CanonicalObjectTypeId" type="IdType" use="required" />
   </xs:complexType>
 
   <!-- Response IAL error -->
@@ -123,7 +137,7 @@
 
   <xs:complexType name="ResponseLookupRoutingInformationType">
     <xs:choice>
-      <xs:element name="AvailableSource" type="SourceType" maxOccurs="unbounded"/>
+      <xs:element name="ResponseItem" type="ResponseItemType" maxOccurs="unbounded"/>
       <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
     </xs:choice>
   </xs:complexType>
