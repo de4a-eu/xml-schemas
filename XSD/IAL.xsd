@@ -58,17 +58,6 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <!-- Request IAL stuff -->
-
-  <xs:complexType name="RequestLookupRoutingInformationType">
-    <xs:sequence>
-      <xs:element name="AtuCode" type="AtuCodeType" minOccurs="0"/>
-      <xs:element name="CanonicalObjectTypeId" type="IdType" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-	<xs:element name="RequestLookupRoutingInformation" type="RequestLookupRoutingInformationType"/>
-  
   <!-- Response IAL stuff -->
   
   <xs:complexType name="ParameterType">
