@@ -7,7 +7,7 @@
            attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.de4a.eu/2020/commons/type/v2" schemaLocation="de4a/common-types.xsd"/>
 
-	<xs:element name="RequestForwardEvidence" type="ct:ResponseExtractMultiEvidenceType"/>
+	<xs:element name="ResponseTransferEvidence" type="ct:ResponseExtractMultiEvidenceType"/>
 	<xs:element name="USIRedirectUser" type="ct:RedirectUserType"/>
 	<xs:element name="EventNotification" type="ct:EventNotificationType"/>
 </xs:schema>
