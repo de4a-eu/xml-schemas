@@ -69,7 +69,7 @@
 
   <xs:complexType name="TimePeriodType">
     <xs:sequence>
-      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="StartDate" type="xs:dateTime"/>
       <xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
@@ -232,7 +232,7 @@
       <xs:element name="DataRequestSubject" type="DataRequestSubjectCVType"/>
       <xs:element name="CanonicalEvidenceTypeId" type="IdType"/>
       <xs:element name="RequestGrounds" type="RequestGroundsType"/>
-      <xs:element name="AdditionalParameter" type="AdditionalParameterType" maxOccurs="unbounded" minOccurs="0" />
+      <xs:element name="AdditionalParameter" type="AdditionalParameterType" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -283,8 +283,11 @@
   <xs:complexType name="ResponseEventSubscriptionItemType">
     <xs:sequence>
       <xs:element name="RequestItemId" type="IdType"/>
-	  <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
-      <xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
+      <xs:element name="CanonicalEventCatalogUri" type="xs:anyURI"/>
+      <xs:choice>
+        <xs:element name="SubscriptionPeriod" type="TimePeriodType"/>
+        <xs:element name="Error" type="ErrorType" maxOccurs="unbounded"/>
+      </xs:choice>
     </xs:sequence>
   </xs:complexType>
   
@@ -326,7 +329,7 @@
     <xs:complexContent>
       <xs:extension base="RequestExtractMultiEvidenceType">
         <xs:sequence>
-          <xs:element name="RequestEvidenceUSIItem" type="RequestEvidenceUSIItemType" maxOccurs="unbounded" />
+          <xs:element name="RequestEvidenceUSIItem" type="RequestEvidenceUSIItemType" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -346,7 +349,7 @@
     <xs:complexContent>
       <xs:extension base="RequestExtractMultiEvidenceType">
         <xs:sequence>
-          <xs:element name="EventSubscripRequestItem" type="EventSubscripRequestItemType" maxOccurs="unbounded" />
+          <xs:element name="EventSubscripRequestItem" type="EventSubscripRequestItemType" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -374,7 +377,7 @@
     <xs:complexContent>
       <xs:extension base="ResponseBaseType">
         <xs:sequence>
-          <xs:element name="ResponseExtractEvidenceItem" type="ResponseExtractEvidenceItemType" maxOccurs="unbounded" />
+          <xs:element name="ResponseExtractEvidenceItem" type="ResponseExtractEvidenceItemType" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -384,7 +387,7 @@
     <xs:complexContent>
       <xs:extension base="ResponseBaseType">
         <xs:sequence>
-          <xs:element name="ResponseEventSubscriptionItem" type="ResponseEventSubscriptionItemType" maxOccurs="unbounded" />
+          <xs:element name="ResponseEventSubscriptionItem" type="ResponseEventSubscriptionItemType" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -397,7 +400,7 @@
       <xs:element name="TimeStamp" type="xs:dateTime"/>
       <xs:element name="DataEvaluator" type="AgentType"/>
       <xs:element name="DataOwner" type="AgentType"/>
-      <xs:element name="EventNotificationItem" type="EventNotificationItemType" maxOccurs="unbounded" />
+      <xs:element name="EventNotificationItem" type="EventNotificationItemType" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -415,3 +418,5 @@
   </xs:complexType>
   <!-- END RESPONSES -->
 </xs:schema>
+
+
