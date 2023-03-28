@@ -1,4 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2023, Partners of the EU funded DE4A project consortium
+  (https://www.de4a.eu/consortium), under Grant Agreement No.870635
+
+Author: DE4A Partner Organisation
+
+Licensed under the CC-BY-4.0 license.
+-->
 <xs:schema xmlns="http://www.de4a.eu/2020/commons/type/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace"
   xmlns:cv="https://data.europe.eu/semanticassets/ns/cv/common/dataTypes-2.0.0#" xmlns:ct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
   xmlns:ein="http://eidas.europa.eu/attributes/naturalperson" xmlns:eil="http://eidas.europa.eu/attributes/legalperson"

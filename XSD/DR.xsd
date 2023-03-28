@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2023, Partners of the EU funded DE4A project consortium
+  (https://www.de4a.eu/consortium), under Grant Agreement No.870635
+
+Author: DE4A Partner Organisation
+
+Licensed under the CC-BY-4.0 license.
+-->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	         xmlns="http://www.de4a.eu/2020/data/requestor/v2"
 	         xmlns:ct="http://www.de4a.eu/2020/commons/type/v2"

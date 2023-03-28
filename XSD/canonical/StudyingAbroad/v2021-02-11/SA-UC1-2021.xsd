@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<!--
+Copyright 2023, Partners of the EU funded DE4A project consortium
+  (https://www.de4a.eu/consortium), under Grant Agreement No.870635
+
+Author: DE4A Partner Organisation
+
+Licensed under the CC-BY-4.0 license.
+-->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:cred="http://data.europa.eu/europass/model/credentials/w3c#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:sa="https://data.europe.eu/de4a/model/studying-abroad/" xmlns:edci="http://data.europa.eu/europass/model/credentials#" targetNamespace="https://data.europe.eu/de4a/model/studying-abroad/">
 	<xsd:import namespace="http://data.europa.eu/europass/model/credentials#" schemaLocation="provided/edci_simpleContentTypes.xsd"/>
 	<xsd:import namespace="http://data.europa.eu/europass/model/credentials#" schemaLocation="provided/edci_credentialTypes.xsd"/>

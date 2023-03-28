@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Peter Bruhn Andersen (Digitaliseringsstyrelsen) -->
+<!--
+Copyright 2023, Partners of the EU funded DE4A project consortium
+  (https://www.de4a.eu/consortium), under Grant Agreement No.870635
+
+Author: DE4A Partner Organisation
+
+Licensed under the CC-BY-4.0 license.
+-->
 <xsd:schema elementFormDefault="qualified"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
